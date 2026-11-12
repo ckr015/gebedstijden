@@ -89,7 +89,7 @@ src:'Bron van de tijden',srcText:'De app rekent de tijden zelf uit met de regels
 alerts:'Meldingen',aStart:'Bij begin van elk gebed',aRemind:'Herinnering vóór het einde',aRemindSub:'Alleen als je niet hebt afgevinkt',aMin:'Hoe lang van tevoren',
 aIkindi:'İkindi: herinner vóór de kerahat',aKerahat:'Kerahat begint',aCuma:'Vrijdaggebed (cuma)',aCumaSub:'1 uur voor cuma',
 aNote:'Meldingen werken alleen zolang deze pagina open staat. Echte meldingen en de volledige ezan komen in de iPhone-app.',
-kMin:'Lengte van de kerahat',min:'min',
+kNote:'Kerahat volgens Diyanet: ongeveer 45 minuten na zonsopgang, kort voor öğle als de zon op haar hoogst staat, en ongeveer 45 minuten voor zonsondergang.',min:'min',
 sound:'Geluid',sBel:'Zachte bel',sDruppel:'Waterdruppel',sNey:'Ney-toon',sAkkoord:'Rustig akkoord',sStil:'Stil',sEigen:'Eigen geluidsbestand',sPick:'Kies een bestand',sPlay:'Beluister {s}',
 sNote:'Tik één keer op een afspeelknop. Daarna mag de pagina geluid maken zolang hij open staat. Een eigen bestand blijft bewaard tot je de pagina sluit.',
 tStart:'Tijd voor {p}',tStartSub:'Bidden kan tot {t}.',tRemind:'Nog {n} min voor {p}',tRemindSub:'Je hebt {p} nog niet afgevinkt.',tKerahat:'Kerahat is begonnen',tKerahatSub:'Niet bidden tot {t}.',tCuma:'Over een uur is het cuma',
@@ -128,7 +128,7 @@ src:'Vakitlerin kaynağı',srcText:'Uygulama vakitleri Diyanet’in kurallarıyl
 alerts:'Bildirimler',aStart:'Her vakit girdiğinde',aRemind:'Vakit çıkmadan hatırlat',aRemindSub:'Yalnızca işaretlemediyseniz',aMin:'Ne kadar önce',
 aIkindi:'İkindi: kerahatten önce hatırlat',aKerahat:'Kerahat başlayınca',aCuma:'Cuma namazı',aCumaSub:'Cumadan 1 saat önce',
 aNote:'Bildirimler yalnızca bu sayfa açıkken çalışır. Gerçek bildirimler ve tam ezan iPhone uygulamasında olacak.',
-kMin:'Kerahat süresi',min:'dk',
+kNote:'Diyanet’e göre kerahat: güneş doğduktan sonra yaklaşık 45 dakika, güneş tepedeyken öğleden hemen önce ve güneş batmadan önce yaklaşık 45 dakika.',min:'dk',
 sound:'Ses',sBel:'Yumuşak zil',sDruppel:'Su damlası',sNey:'Ney sesi',sAkkoord:'Sakin akor',sStil:'Sessiz',sEigen:'Kendi ses dosyam',sPick:'Dosya seç',sPlay:'{s} dinle',
 sNote:'Bir kez oynat düğmesine dokunun. Sonra sayfa açık kaldıkça ses çalabilir. Kendi dosyanız sayfa kapanana kadar saklanır.',
 tStart:'{p} vakti girdi',tStartSub:'{t} saatine kadar kılınabilir.',tRemind:'{p} vaktinin çıkmasına {n} dk',tRemindSub:'{p} henüz işaretlenmedi.',tKerahat:'Kerahat başladı',tKerahatSub:'{t} saatine kadar namaz kılınmaz.',tCuma:'Cumaya bir saat kaldı',
@@ -143,6 +143,7 @@ var S={lang:'nl',city:0,cityChosen:false,prayed:{},fasted:{},guide:'',
 (function load(){ try{ var raw=window.localStorage.getItem(KEY); if(raw){ var o=JSON.parse(raw);
   for(var k in o){ if(k==='set'){ for(var j in o.set) S.set[j]=o.set[j]; } else S[k]=o[k]; } } }catch(e){}
   if(S.set.sound==='eigen') S.set.sound='bel';
+  S.set.kerahatMin=45;
   if(!(S.city>=0 && S.city<CITIES.length)) S.city=0; })();
 function save(){ try{ window.localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
 
@@ -172,11 +173,12 @@ var tcache={};
 function clearTimes(){ tcache={}; }
 function timesFor(k){ if(tcache[k]) return tcache[k]; var p=place(), a=splitKey(k), r=PT.compute(a.y,a.m,a.d,p.lat,p.lng);
   tcache[k]=r; return r; }
+var K2=10*60000; // istiva: kort voor öğle
 function buildDay(k){ var x=timesFor(k), n=timesFor(addDays(k,1)), K=S.set.kerahatMin*60000;
   return {key:k,t:x,
     prayers:[{id:'sabah',start:x.fajr,end:x.rise},{id:'ogle',start:x.noon,end:x.asr},{id:'ikindi',start:x.asr,end:x.set},{id:'aksam',start:x.set,end:x.isha},{id:'yatsi',start:x.isha,end:n.fajr}]
       .map(function(p){ p.key=k+':'+p.id; p.day=k; return p; }),
-    kerahat:[{id:'k1',start:x.rise,end:x.rise+K},{id:'k2',start:x.noon-K,end:x.noon},{id:'k3',start:x.set-K,end:x.set}]}; }
+    kerahat:[{id:'k1',start:x.rise,end:x.rise+K},{id:'k2',start:x.noon-K2,end:x.noon},{id:'k3',start:x.set-K,end:x.set}]}; }
 function nowMs(){ return Date.now(); }
 function ctx(){ var p=place(), now=nowMs(), pp=parts(now,p.tz), today=keyOf(pp.y,pp.m,pp.d);
   var days=[buildDay(addDays(today,-1)),buildDay(today),buildDay(addDays(today,1))], all=[], ks=[];
@@ -254,7 +256,7 @@ function ramadanCard(c){ var x=c.day.t, n=dayDiff(RAM.start,c.today)+1, h='<sect
   return h; }
 
 function viewWindows(c){ var x=c.day.t, K=S.set.kerahatMin*60000, n=c.tom.t.fajr, now=c.now;
-  var segs=[[x.fajr,x.rise,pname('sabah'),t('wSabah'),1],[x.rise,x.rise+K,t('wK1'),t('wK1s'),0],[x.rise+K,x.noon-K,t('wFree'),t('wFrees'),1],[x.noon-K,x.noon,t('wK2'),t('wK2s'),0],
+  var segs=[[x.fajr,x.rise,pname('sabah'),t('wSabah'),1],[x.rise,x.rise+K,t('wK1'),t('wK1s'),0],[x.rise+K,x.noon-K2,t('wFree'),t('wFrees'),1],[x.noon-K2,x.noon,t('wK2'),t('wK2s'),0],
     [x.noon,x.asr,pname('ogle'),t('wOgle'),1],[x.asr,x.set-K,pname('ikindi'),t('wIkindi'),1],[x.set-K,x.set,t('wK3'),t('wK3s'),0],[x.set,x.isha,pname('aksam'),t('wAksam'),1],[x.isha,n,pname('yatsi'),t('wYatsi'),1]];
   var h='<header class="col"><h1>'+esc(t('winTitle'))+'</h1><span class="small muted">'+esc(t('winSub',{c:c.place.name}))+'</span></header>';
   h+= c.ker ? '<div class="status no">'+IC.no+'<div class="col"><span class="title">'+esc(t('kerahatNow'))+'</span><span class="small" style="color:#5C3A0A">'+esc(t(c.ker.id==='k3'?'kerahatOnlyAsr':'kerahatUntil',{t:hm(c.ker.end)}))+'</span></div></div>'
@@ -262,7 +264,7 @@ function viewWindows(c){ var x=c.day.t, K=S.set.kerahatMin*60000, n=c.tom.t.fajr
   h+='<section style="display:flex;flex-direction:column;gap:6px">';
   segs.forEach(function(s){ var cur=s[0]<=now && now<s[1];
     h+='<div class="seg'+(s[4]?'':' no')+(cur?' cur':'')+'"><span class="t">'+hm(s[0])+' – '+hm(s[1])+'</span><div class="col grow"><span class="title" style="font-size:14px">'+esc(s[2])+(cur?' · '+esc(t('now').toLocaleLowerCase(t('locale'))):'')+'</span><span class="small" style="color:'+(s[4]?'#4E5B58':'#5C3A0A')+'">'+esc(s[3])+'</span></div><span class="chip'+(s[4]?'':' no')+'" style="min-height:0;padding:3px 8px;font-size:11px">'+esc(t(s[4]?'ok':'no'))+'</span></div>'; });
-  h+='</section><div class="between card" style="flex-direction:row"><span class="title">'+esc(t('kMin'))+'</span>'+stepper('kerahatMin',S.set.kerahatMin,20,60,5)+'</div>';
+  h+='</section><div class="note" style="text-align:center">'+esc(t('kNote'))+'</div>';
   return h; }
 
 function stepper(id,val,min,max,step){ return '<div class="stepper" id="'+(id==='kerahatMin'?'kmin':'st-'+id)+'"><button data-act="step" data-id="'+id+'" data-d="-'+step+'" data-min="'+min+'" data-max="'+max+'" aria-label="−">−</button><span>'+val+' '+esc(t('min'))+'</span><button data-act="step" data-id="'+id+'" data-d="'+step+'" data-min="'+min+'" data-max="'+max+'" aria-label="+">+</button></div>'; }
