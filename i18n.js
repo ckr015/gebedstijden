@@ -1,6 +1,7 @@
 /* Teksten van de app: Nederlands, Turks, Engels */
 var L = {
 nl: {
+navWeek:'Week',dayTitle:'Jouw dag',dayWork:'Tijdens je werk: {p}.',dayWorkNone:'Geen gebed valt helemaal in je werktijd.',dayOne:'Eén pauze, twee gebeden: begin öğle om {a}, dan ikindi om {b}. Elk gebed blijft in zijn eigen tijd.',dayTight:'Krapste tijd vandaag: {p}, {d} ({a}–{b}).',dayEve:'Vanavond: Akşam {a}, Yatsı {b}.',dayTom:'Morgen: imsak {a}, zonsopgang {b}.',daySet:'Werktijden instellen',hU:'u',work:'Werktijden',workSub:'Op werkdagen zie je welke gebeden in je werktijd vallen.',workFrom:'Van',workTo:'Tot',mKerahat:'Kerahat-tijden',mKerahatSub:'Wanneer je wel en niet mag bidden',mMonth:'Maandtabel',mMonthSub:'Alle tijden van de maand',qStop:'Kompas stoppen',mosFind:'Zoek moskeeën in de buurt',mosBusy:'Moskeeën zoeken…',mosFail:'Zoeken is niet gelukt. Probeer het later opnieuw of open de kaart.',mosNone:'Geen moskeeën gevonden binnen 12 km.',mosNoName:'Moskee',mosRoute:'Route',mosSrc:'Gegevens: OpenStreetMap. De lijst kan onvolledig zijn.',
 appName:'Gebedstijden',welcome:'Welkom',welcomeSub:'Kies één keer waar je bent. Daarna doet de app de rest.',useLoc:'Gebruik mijn locatie',locBusy:'Locatie zoeken…',locFail:'Locatie is niet beschikbaar. Kies je stad.',orCity:'Of kies je stad',cont:'Verder',myLoc:'Mijn locatie',
 navToday:'Vandaag',navWin:'Kerahat',navQibla:'Kıble',navGuide:'Gids',navMore:'Meer',
 now:'Nu',next:'Volgende',untilEnd:'tot het einde van {p}',untilNext:'tot het volgende gebed',untilSun:'tot zonsopgang',at:'om',
@@ -47,6 +48,7 @@ close:'Sluit',iPrayed:'Ik heb gebeden',
 wind:['N','NO','O','ZO','Z','ZW','W','NW'],locale:'nl-NL',mosqueWord:'moskee'
 },
 tr: {
+navWeek:'Hafta',dayTitle:'Gününüz',dayWork:'Mesai içinde: {p}.',dayWorkNone:'Hiçbir vakit tamamen mesaiye denk gelmiyor.',dayOne:'Tek molada iki namaz: öğleye {a} saatinde başlayın, ikindiyi {b} saatinde kılın. Her namaz kendi vaktinde kalır.',dayTight:'Bugünün en dar vakti: {p}, {d} ({a}–{b}).',dayEve:'Bu akşam: Akşam {a}, Yatsı {b}.',dayTom:'Yarın: imsak {a}, güneş {b}.',daySet:'Mesai saatlerini ayarla',hU:'sa',work:'Mesai saatleri',workSub:'İş günlerinde hangi vakitlerin mesaiye denk geldiğini görürsünüz.',workFrom:'Başlangıç',workTo:'Bitiş',mKerahat:'Kerahat vakitleri',mKerahatSub:'Ne zaman namaz kılınır, ne zaman kılınmaz',mMonth:'Aylık tablo',mMonthSub:'Ayın bütün vakitleri',qStop:'Pusulayı kapat',mosFind:'Yakındaki camileri bul',mosBusy:'Camiler aranıyor…',mosFail:'Arama başarısız oldu. Daha sonra deneyin veya haritayı açın.',mosNone:'12 km içinde cami bulunamadı.',mosNoName:'Cami',mosRoute:'Yol tarifi',mosSrc:'Veri: OpenStreetMap. Liste eksik olabilir.',
 appName:'Namaz Vakitleri',welcome:'Hoş geldiniz',welcomeSub:'Bulunduğunuz yeri bir kez seçin. Gerisini uygulama halleder.',useLoc:'Konumumu kullan',locBusy:'Konum aranıyor…',locFail:'Konum alınamadı. Şehrinizi seçin.',orCity:'Veya şehrinizi seçin',cont:'Devam',myLoc:'Konumum',
 navToday:'Bugün',navWin:'Kerahat',navQibla:'Kıble',navGuide:'Rehber',navMore:'Diğer',
 now:'Şimdi',next:'Sıradaki',untilEnd:'{p} vaktinin çıkmasına',untilNext:'sıradaki vakte kalan',untilSun:'güneşin doğmasına',at:'saat',
@@ -93,6 +95,7 @@ close:'Kapat',iPrayed:'Kıldım',
 wind:['K','KD','D','GD','G','GB','B','KB'],locale:'tr-TR',mosqueWord:'cami'
 },
 en: {
+navWeek:'Week',dayTitle:'Your day',dayWork:'During work: {p}.',dayWorkNone:'No prayer falls entirely within your working hours.',dayOne:'One break, two prayers: start öğle at {a}, then ikindi at {b}. Each prayer stays in its own time.',dayTight:'Tightest window today: {p}, {d} ({a}–{b}).',dayEve:'Tonight: Akşam {a}, Yatsı {b}.',dayTom:'Tomorrow: imsak {a}, sunrise {b}.',daySet:'Set working hours',hU:'h',work:'Working hours',workSub:'On working days you see which prayers fall within your working hours.',workFrom:'From',workTo:'To',mKerahat:'Kerahat times',mKerahatSub:'When you may and may not pray',mMonth:'Monthly table',mMonthSub:'All times of the month',qStop:'Stop compass',mosFind:'Find mosques nearby',mosBusy:'Finding mosques…',mosFail:'The search failed. Try again later or open the map.',mosNone:'No mosques found within 12 km.',mosNoName:'Mosque',mosRoute:'Route',mosSrc:'Data: OpenStreetMap. The list may be incomplete.',
 appName:'Prayer Times',welcome:'Welcome',welcomeSub:'Choose where you are once. The app does the rest.',useLoc:'Use my location',locBusy:'Finding your location…',locFail:'Location is not available. Choose your city.',orCity:'Or choose your city',cont:'Continue',myLoc:'My location',
 navToday:'Today',navWin:'Kerahat',navQibla:'Qibla',navGuide:'Guide',navMore:'More',
 now:'Now',next:'Next',untilEnd:'until the end of {p}',untilNext:'until the next prayer',untilSun:'until sunrise',at:'at',

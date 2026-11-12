@@ -54,7 +54,7 @@ var KMIN=45*60000, K2=10*60000; // kerahat na zonsopgang en voor zonsondergang; 
 
 /* ---------- toestand ---------- */
 var KEY='gebedstijden.v1';
-var S={lang:null,city:0,geo:null,chosen:false,prayed:{},kaza:{},fasted:{},guide:'',mode:'auto',sinceMs:0,
+var S={lang:null,city:0,geo:null,chosen:false,prayed:{},kaza:{},fasted:{},guide:'',mode:'auto',sinceMs:0,work:{on:false,from:'09:00',to:'17:30'},
   set:{start:true,remind:true,remindMin:15,ikindi:true,kerahat:false,cuma:true,sound:'bel'}};
 (function load(){ try{ var raw=window.localStorage.getItem(KEY); if(raw){ var o=JSON.parse(raw);
     for(var k in o){ if(k==='set'){ for(var j in o.set) S.set[j]=o.set[j]; } else S[k]=o[k]; }
@@ -63,7 +63,8 @@ var S={lang:null,city:0,geo:null,chosen:false,prayed:{},kaza:{},fasted:{},guide:
   if(!(S.city>=0 && S.city<CITIES.length)) S.city=0;
   if(!L[S.lang]){ var nav=(window.navigator.language||'nl').slice(0,2).toLowerCase(); S.lang=L[nav]?nav:'nl'; }
   if(!S.sinceMs) S.sinceMs=Date.now();
-  if(!S.kaza) S.kaza={}; })();
+  if(!S.kaza) S.kaza={};
+  if(!S.work || typeof S.work.from!=='string') S.work={on:false,from:'09:00',to:'17:30'}; })();
 function save(){ try{ window.localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
 
 function t(k,v){ var s=L[S.lang][k]; if(s===undefined) s=L.nl[k]; if(v){ for(var x in v) s=s.split('{'+x+'}').join(v[x]); } return s; }
@@ -122,7 +123,7 @@ no:'<svg class="c-warn" width="22" height="22" viewBox="0 0 20 20" fill="none" s
 play:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>',
 on:'<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="11" cy="11" r="5" fill="currentColor"></circle></svg>',
 off:'<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle></svg>',
-nav:{vandaag:'<circle cx="11" cy="11" r="8"></circle><path d="M11 6.5V11l3 2"></path>',vensters:'<path d="M4 5h14M4 11h9M4 17h12"></path>',kible:'<circle cx="11" cy="11" r="8"></circle><path d="M14.5 7.5l-2 5-5 2 2-5z"></path>',gids:'<path d="M11 5c-2-1.3-4.5-1.5-7-1v13c2.5-.5 5-.3 7 1 2-1.3 4.5-1.5 7-1V4c-2.5-.5-5-.3-7 1zM11 5v13"></path>',meer:'<circle cx="5" cy="11" r="1.5"></circle><circle cx="11" cy="11" r="1.5"></circle><circle cx="17" cy="11" r="1.5"></circle>'}};
+nav:{vandaag:'<circle cx="11" cy="11" r="8"></circle><path d="M11 6.5V11l3 2"></path>',overzicht:'<rect x="4" y="5" width="14" height="13" rx="2"></rect><path d="M4 9.5h14M8 3v4M14 3v4"></path>',kible:'<circle cx="11" cy="11" r="8"></circle><path d="M14.5 7.5l-2 5-5 2 2-5z"></path>',gids:'<path d="M11 5c-2-1.3-4.5-1.5-7-1v13c2.5-.5 5-.3 7 1 2-1.3 4.5-1.5 7-1V4c-2.5-.5-5-.3-7 1zM11 5v13"></path>',meer:'<circle cx="5" cy="11" r="1.5"></circle><circle cx="11" cy="11" r="1.5"></circle><circle cx="17" cy="11" r="1.5"></circle>'}};
 
 /* ---------- onderdelen ---------- */
 function sw(id,on,label){ return '<button class="switch" role="switch" aria-checked="'+(on?'true':'false')+'" aria-label="'+esc(label)+'" data-act="toggle" data-id="'+id+'"><span><span></span></span></button>'; }
@@ -133,9 +134,9 @@ function langCtl(){ return '<div class="segctl"><button data-act="lang" data-id=
 function stepper(id,val,min,max,step){ return '<div class="stepper"><button data-act="step" data-id="'+id+'" data-d="-'+step+'" data-min="'+min+'" data-max="'+max+'" aria-label="−">−</button><span>'+val+' '+esc(t('min'))+'</span><button data-act="step" data-id="'+id+'" data-d="'+step+'" data-min="'+min+'" data-max="'+max+'" aria-label="+">+</button></div>'; }
 function kerStatus(c){ var k3=c.ker.id==='k3', open=k3 && !prayed(c.today+':ikindi');
   var title=open?t('k3Pray'):t('kerahatNow'), sub=open?t('k3PraySub',{t:hm(c.ker.end)}):t(k3?'kerahatOnlyAsr':'kerahatUntil',{t:hm(c.ker.end)});
-  return '<div class="status no">'+IC.no+'<div class="col"><span class="title">'+esc(title)+'</span><span class="small">'+esc(sub)+'</span></div></div>'; }
+  return '<a class="status no" href="#vensters">'+IC.no+'<div class="col grow"><span class="title">'+esc(title)+'</span><span class="small">'+esc(sub)+'</span></div><span aria-hidden="true">›</span></a>'; }
 function okStatus(c){ var nk=c.nextKer, pk=parts(nk.start,c.place.tz), pre=keyOf(pk.y,pk.m,pk.d)!==c.today?t('tomorrow')+' ':'';
-  return '<div class="status">'+IC.ok+'<div class="col"><span class="title">'+esc(t('allowed'))+'</span><span class="small muted">'+esc(t('nextKerahat',{a:pre+hm(nk.start),b:hm(nk.end)}))+'</span></div></div>'; }
+  return '<a class="status" href="#vensters">'+IC.ok+'<div class="col grow"><span class="title">'+esc(t('allowed'))+'</span><span class="small muted">'+esc(t('nextKerahat',{a:pre+hm(nk.start),b:hm(nk.end)}))+'</span></div><span aria-hidden="true">›</span></a>'; }
 function whenTxt(c,d){ var n=dayDiff(c.today,d.d); return n===0?t('dIn0'):n===1?t('dIn1'):t('dIn',{n:n}); }
 
 /* ---------- schermen ---------- */
@@ -153,12 +154,14 @@ function viewToday(c){ var p=c.place, d=c.day, x=d.t, h='', hj=hijri(c.today);
   var pg=Math.max(0,Math.min(100,(c.now-a0)/(target-a0)*100));
   h+='<section class="hero'+(c.ker?' kerahat':'')+'"><div class="between"><span class="lbl">'+esc(lbl)+'</span><span class="dim">'+esc(pname(c.next.id))+' '+esc(t('at'))+' '+hm(c.next.start)+'</span></div>'+
      '<div class="big" data-cd="'+target+'">'+cd(target-c.now)+'</div><div class="sub">'+esc(sub)+'</div>'+
-     '<div class="bar" aria-hidden="true"><i data-pg="'+a0+','+target+'" style="width:'+pg.toFixed(1)+'%"></i></div>';
+     '<div class="bar" aria-hidden="true">'+((c.cur && c.cur.id==='ikindi')?'<b style="width:'+(KMIN/(target-a0)*100).toFixed(1)+'%"></b>':'')+'<i data-pg="'+a0+','+target+'" style="width:'+pg.toFixed(1)+'%"></i></div>'+
+     '<div class="between dim num"><span>'+hm(a0)+'</span>'+((c.cur && c.cur.id==='ikindi')?'<span>kerahat '+hm(target-KMIN)+'</span>':'')+'<span>'+hm(target)+'</span></div>';
   if(c.cur){ h+= prayed(c.cur.key)
       ? '<div class="between"><span class="sub">'+esc(t('prayedDone',{p:pname(c.cur.id)}))+'</span><button class="btn onhero" data-act="pray" data-key="'+c.cur.key+'">'+esc(t('undo'))+'</button></div>'
       : '<button class="btn gold wide" data-act="pray" data-key="'+c.cur.key+'">'+esc(t('prayedBtn',{p:pname(c.cur.id)}))+'</button>'; }
   h+='</section>';
   h+= c.ker ? kerStatus(c) : okStatus(c);
+  h+=dayCard(c);
   if(S.set.sound!=='stil' && (S.set.start||S.set.remind) && !soundOn) h+='<button class="status" style="width:100%;text-align:left" data-act="soundon"><div class="col grow"><span class="title">'+esc(t('soundOff'))+'</span><span class="small muted">'+esc(t('aNote'))+'</span></div><span class="chip">'+esc(t('soundEnable'))+'</span></button>';
   var up=upcomingDays(c); if(up.length){ var dn=dayDiff(c.today,up[0].d); if(dn<=1) h+='<a class="status" href="#dagen"><div class="col grow"><span class="title">'+esc(t(dn===0?'dTodayIs':'dTomorrow',{n:up[0].n[S.lang]}))+'</span><span class="small muted">'+esc(up[0].h)+'</span></div><span aria-hidden="true">›</span></a>'; }
   if(c.wd==='Fri' && c.now<x.asr) h+='<div class="status"><div class="col"><span class="title">'+esc(t('cumaToday'))+'</span><span class="small muted">'+esc(t('cumaAt',{t:hm(x.noon)}))+'</span></div></div>';
@@ -182,6 +185,27 @@ function viewToday(c){ var p=c.place, d=c.day, x=d.t, h='', hj=hijri(c.today);
      '<div class="note center">'+esc(t('srcCalc'))+'</div>';
   return h; }
 
+function mins(ms,tz){ var p=parts(ms,tz); return p.h*60+p.mi; }
+function dur(ms){ var m=Math.round(ms/60000), h=Math.floor(m/60); return (h?h+' '+t('hU')+' ':'')+(m%60)+' '+t('min'); }
+function workRange(c){ if(!S.work.on || c.wd==='Sat' || c.wd==='Sun') return null; var a=S.work.from.split(':'), b=S.work.to.split(':'), ws=+a[0]*60+ +a[1], we=+b[0]*60+ +b[1]; return we>ws?{ws:ws,we:we}:null; }
+function dayCard(c){ var x=c.day.t, tz=c.place.tz, M=function(ms){ return mins(ms,tz); }, W=workRange(c);
+  var f=M(x.fajr), r=M(x.rise), n=M(x.noon), a=M(x.asr), st=M(x.set), i=M(x.isha), K=KMIN/60000, k2=K2/60000; if(i<st) i=1440;
+  var blocks=[[0,f,'Y',0],[f,r,'S',0],[r,r+K,'',1],[n-k2,n,'',1],[n,a,'Ö',0],[a,st-K,'İ',0],[st-K,st,'',1],[st,i,'A',0],[i,1440,'Y',0]];
+  var h='<section class="card"><div class="between"><h2>'+esc(t('dayTitle'))+'</h2>'+(S.work.on?'':'<a class="small" style="font-weight:600;text-decoration:none" href="#instellingen">'+esc(t('daySet'))+' ›</a>')+'</div><div class="stripwrap" aria-hidden="true">';
+  if(W) h+='<i class="workline" style="left:'+(W.ws/14.4).toFixed(2)+'%;width:'+((W.we-W.ws)/14.4).toFixed(2)+'%"></i>';
+  h+='<div class="strip">';
+  blocks.forEach(function(b){ if(b[1]<=b[0]) return; h+='<span class="'+(b[3]?'kz':'pz')+'" style="left:'+(b[0]/14.4).toFixed(2)+'%;width:'+((b[1]-b[0])/14.4).toFixed(2)+'%">'+(((b[1]-b[0])>=50)?b[2]:'')+'</span>'; });
+  h+='<i class="nowline" style="left:'+(M(c.now)/14.4).toFixed(2)+'%"></i></div><div class="between small muted num"><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span></div></div>';
+  var lines=[], wins=[{id:'sabah',s:x.fajr,e:x.rise},{id:'ogle',s:x.noon,e:x.asr},{id:'ikindi',s:x.asr,e:x.set-KMIN},{id:'aksam',s:x.set,e:x.isha},{id:'yatsi',s:x.isha,e:c.tom.t.fajr}];
+  if(c.now<x.asr){
+    if(W){ var inW=wins.filter(function(w){ var ws=M(w.s), we=ws+(w.e-w.s)/60000; return Math.max(0,W.ws-ws)+Math.max(0,we-W.we)<20; }).map(function(w){ return pname(w.id); });
+      lines.push(inW.length?t('dayWork',{p:inW.join(', ')}):t('dayWorkNone')); }
+    else { var left=wins.filter(function(w){ return w.e>c.now; }), tight=null; left.forEach(function(w){ if(!tight || (w.e-w.s)<(tight.e-tight.s)) tight=w; });
+      if(tight) lines.push(t('dayTight',{p:pname(tight.id),d:dur(tight.e-tight.s),a:hm(tight.s),b:hm(tight.e)})); }
+    if(!prayed(c.today+':ogle') && c.wd!=='Fri') lines.push(t('dayOne',{a:hm(x.asr-15*60000),b:hm(x.asr)})); }
+  else { if(c.now<x.isha) lines.push(t('dayEve',{a:hm(x.set),b:hm(x.isha)})); lines.push(t('dayTom',{a:hm(c.tom.t.fajr),b:hm(c.tom.t.rise)})); }
+  lines.forEach(function(l){ h+='<span class="small">'+esc(l)+'</span>'; });
+  return h+'</section>'; }
 function ramadanCard(c){ var x=c.day.t, n=dayDiff(RAM.start,c.today)+1, h='<section class="hero night"><div class="between"><span class="lbl">'+esc(t('rDay',{n:n}))+'</span><span class="dim">'+esc(t('rImsak'))+' '+hm(x.fajr)+' · '+esc(t('rIftar'))+' '+hm(x.set)+'</span></div>';
   if(c.now<x.fajr){ h+='<div class="sub">'+esc(t('rSahurIn'))+'</div><div class="big" data-cd="'+x.fajr+'">'+cd(x.fajr-c.now)+'</div>'; }
   else if(c.now<x.set){ var pg=(c.now-x.fajr)/(x.set-x.fajr)*100; h+='<div class="sub">'+esc(t('rIftarIn'))+'</div><div class="big" data-cd="'+x.set+'">'+cd(x.set-c.now)+'</div><div class="bar" aria-hidden="true"><i data-pg="'+x.fajr+','+x.set+'" style="width:'+pg.toFixed(1)+'%"></i></div>'; }
@@ -193,7 +217,7 @@ function ramadanCard(c){ var x=c.day.t, n=dayDiff(RAM.start,c.today)+1, h='<sect
 function viewWindows(c){ var x=c.day.t, n=c.tom.t.fajr, now=c.now;
   var segs=[[x.fajr,x.rise,pname('sabah'),t('wSabah'),1],[x.rise,x.rise+KMIN,t('wK1'),t('wK1s'),0],[x.rise+KMIN,x.noon-K2,t('wFree'),t('wFrees'),1],[x.noon-K2,x.noon,t('wK2'),t('wK2s'),0],
     [x.noon,x.asr,pname('ogle'),t('wOgle'),1],[x.asr,x.set-KMIN,pname('ikindi'),t('wIkindi'),1],[x.set-KMIN,x.set,t('wK3'),t('wK3s'),0],[x.set,x.isha,pname('aksam'),t('wAksam'),1],[x.isha,n,pname('yatsi'),t('wYatsi',{t:hm((x.set+n)/2)}),1]];
-  var h='<header class="col"><h1>'+esc(t('winTitle'))+'</h1><span class="small muted">'+esc(t('winSub',{c:c.place.name}))+'</span></header>';
+  var h='<a href="#vandaag" class="back">‹ '+esc(t('navToday'))+'</a><header class="col"><h1>'+esc(t('winTitle'))+'</h1><span class="small muted">'+esc(t('winSub',{c:c.place.name}))+'</span></header>';
   h+= c.ker ? kerStatus(c) : okStatus(c);
   h+='<section style="display:flex;flex-direction:column;gap:6px">';
   segs.forEach(function(s){ var cur=s[0]<=now && now<s[1];
@@ -211,14 +235,34 @@ function viewQibla(c){ var p=c.place, b=bearing(p.lat,p.lng), w=t('wind'), dir=w
     '<g transform="rotate('+b.toFixed(1)+' 110 110)"><path d="M110 42 L122 110 L110 122 L98 110 Z" style="fill:var(--accent-ink)"></path><rect x="101" y="20" width="18" height="18" rx="3" fill="#14201D" stroke="#F2C879" stroke-width="1"></rect><rect x="101" y="25" width="18" height="3" fill="#F2C879"></rect></g></g>'+
     '<circle cx="110" cy="110" r="6" style="fill:var(--ink)"></circle>'+(compass.on?'<path d="M110 2 L117 14 L103 14 Z" style="fill:var(--warn-text)"></path>':'')+'</svg>'+
     '<div class="num" style="font-size:28px;font-weight:700">'+deg+'° '+dir+'</div><div class="small muted center">'+esc(t('qFrom',{d:deg,w:dir}))+' · '+esc(p.name)+'</div>';
-  if(compass.on && !compass.failed) h+='<div class="small center" id="cstat">'+esc(t('qCompassOn'))+'</div>';
+  if(compass.on && !compass.failed) h+='<div class="small center" id="cstat">'+esc(t('qCompassOn'))+'</div><button class="btn line wide" data-act="compassoff">'+esc(t('qStop'))+'</button>';
   else { h+='<div class="small muted center">'+esc(compass.failed?t('qCompassNo'):t('qHelp'))+'</div>'; if(OWN && !compass.failed) h+='<button class="btn wide" data-act="compass">'+esc(t('qCompass'))+'</button>'; }
-  h+='</section><a class="linkcard" href="https://www.google.com/maps/search/'+t('mosqueWord')+'/@'+p.lat.toFixed(4)+','+p.lng.toFixed(4)+',13z" target="_blank" rel="noopener"><div class="col grow"><span class="title">'+esc(t('qMosque'))+'</span><span class="small muted">'+esc(t('qMosqueSub',{c:p.name}))+'</span></div><span class="chip">'+esc(t('qOpen'))+' ›</span></a>';
+  h+='</section>'+mosqueBlock(p)+'<a class="linkcard" href="https://www.google.com/maps/search/'+t('mosqueWord')+'/@'+p.lat.toFixed(4)+','+p.lng.toFixed(4)+',13z" target="_blank" rel="noopener"><div class="col grow"><span class="title">'+esc(t('qMosque'))+'</span><span class="small muted">'+esc(t('qMosqueSub',{c:p.name}))+'</span></div><span class="chip">'+esc(t('qOpen'))+' ›</span></a>';
   return h; }
+var mosq={state:'idle',list:[],key:''};
+function distKm(a,b,c,d){ var R=Math.PI/180, dy=(c-a)*111.2, dx=(d-b)*111.2*Math.cos(a*R); return Math.sqrt(dx*dx+dy*dy); }
+function mosqueBlock(p){ if(!OWN) return ''; var key=p.lat.toFixed(3)+','+p.lng.toFixed(3), m=(mosq.key===key)?mosq:{state:'idle',list:[]};
+  if(m.state==='idle') return '<button class="btn wide" data-act="mosq">'+esc(t('mosFind'))+'</button>';
+  if(m.state==='busy') return '<div class="status"><span class="title">'+esc(t('mosBusy'))+'</span></div>';
+  if(m.state==='fail') return '<div class="status no"><span class="small">'+esc(t('mosFail'))+'</span></div>';
+  if(!m.list.length) return '<div class="status"><span class="small muted">'+esc(t('mosNone'))+'</span></div>';
+  var h='<section class="list"><div class="item"><h2 class="grow">'+esc(t('qMosque'))+'</h2></div>';
+  m.list.forEach(function(x){ h+='<div class="item"><div class="col grow"><span class="title">'+esc(x.name||t('mosNoName'))+'</span><span class="small muted">'+(x.km<1?Math.round(x.km*1000)+' m':x.km.toFixed(1).replace('.',',')+' km')+'</span></div><a class="btn soft" href="https://www.google.com/maps/dir/?api=1&amp;destination='+x.lat.toFixed(5)+','+x.lng.toFixed(5)+'" target="_blank" rel="noopener">'+esc(t('mosRoute'))+'</a></div>'; });
+  return h+'</section><div class="note center">'+esc(t('mosSrc'))+'</div>'; }
+function findMosques(){ var p=place(), key=p.lat.toFixed(3)+','+p.lng.toFixed(3); mosq={state:'busy',list:[],key:key}; render();
+  function fail(){ mosq={state:'fail',list:[],key:key}; render(); }
+  var q='[out:json][timeout:20];nwr(around:12000,'+p.lat.toFixed(3)+','+p.lng.toFixed(3)+')["amenity"="place_of_worship"]["religion"="muslim"];out center 80;';
+  try{ window.fetch('https://overpass-api.de/api/interpreter',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q)})
+    .then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
+    .then(function(j){ var seen={}, list=[]; (j.elements||[]).forEach(function(e){ var la=e.lat||(e.center&&e.center.lat), lo=e.lon||(e.center&&e.center.lon); if(typeof la!=='number' || typeof lo!=='number') return;
+        var nm=(e.tags&&e.tags.name)||'', id=nm+'|'+la.toFixed(3)+'|'+lo.toFixed(3); if(seen[id]) return; seen[id]=1; list.push({name:String(nm).slice(0,60),lat:la,lng:lo,km:distKm(p.lat,p.lng,la,lo)}); });
+      list.sort(function(a,b){ return a.km-b.km; }); mosq={state:'ok',list:list.slice(0,8),key:key}; render(); })
+    .catch(fail); }catch(e){ fail(); } }
 function onOri(e){ var hd=null; if(typeof e.webkitCompassHeading==='number') hd=e.webkitCompassHeading; else if(e.absolute && typeof e.alpha==='number') hd=360-e.alpha;
   if(hd===null || isNaN(hd)) return; compass.heading=hd;
   var g=document.getElementById('dial'); if(g) g.setAttribute('transform','rotate('+(-hd).toFixed(1)+' 110 110)');
   var st=document.getElementById('cstat'); if(st){ var diff=Math.abs(((compass.bearing-hd+540)%360)-180), ok=diff<5; st.textContent=ok?t('qCompassOk'):t('qCompassOn'); st.style.fontWeight=ok?'700':'400'; } }
+function stopCompass(){ window.removeEventListener('deviceorientationabsolute',onOri,true); window.removeEventListener('deviceorientation',onOri,true); compass.on=false; compass.heading=null; }
 function startCompass(){ function fail(){ compass.failed=true; compass.on=false; render(); }
   function go(){ compass.on=true; compass.failed=false; compass.heading=null; window.addEventListener('deviceorientationabsolute',onOri,true); window.addEventListener('deviceorientation',onOri,true);
     window.setTimeout(function(){ if(compass.on && compass.heading===null) fail(); },4000); render(); }
@@ -263,7 +307,7 @@ function viewRamadan(c){ var p=c.place, h=back()+'<h1>'+esc(t('rTitle'))+' 1448<
     h+='<tr'+(k===c.today?' class="today"':'')+'><td class="num">'+(i+1)+'</td><td>'+esc(longDate(k,{weekday:'short',day:'numeric',month:'short'}))+(k==='2027-03-05'?' · Kadir':'')+'</td><td class="num">'+hm(x.fajr)+'</td><td class="num">'+hm(x.set)+'</td><td class="num">'+hm(x.isha)+'</td></tr>'; }
   h+='</tbody></table></div><span class="note">'+esc(t('srcCalc'))+'</span></section>'; return h; }
 
-function viewOverview(c){ var h=back()+'<header class="col"><h1>'+esc(t('ovTitle'))+'</h1><span class="small muted">'+esc(t('ovSub'))+'</span></header><section class="card"><div class="ov"><span></span>';
+function viewOverview(c){ var h='<header class="col"><h1>'+esc(t('ovTitle'))+'</h1><span class="small muted">'+esc(t('ovSub'))+'</span></header><section class="card"><div class="ov"><span></span>';
   PR.forEach(function(id){ h+='<span class="hd">'+esc(pname(id).slice(0,3))+'</span>'; });
   for(var n=0,k=c.today;n<7;n++,k=addDays(k,-1)){ var d=buildDay(k);
     h+='<span class="small" style="font-weight:600">'+esc(longDate(k,{weekday:'short',day:'numeric',month:'short'}))+'</span>';
@@ -274,12 +318,21 @@ function viewOverview(c){ var h=back()+'<header class="col"><h1>'+esc(t('ovTitle
   h+='<section class="list"><div class="item"><h2 class="grow">'+esc(t('ovKaza'))+(miss.length?' ('+miss.length+')':'')+'</h2></div>';
   if(!miss.length) h+='<div class="item"><span class="small muted">'+esc(t('ovNone'))+'</span></div>';
   miss.forEach(function(p){ h+='<div class="item"><div class="col grow"><span class="title">'+esc(pname(p.id))+'</span><span class="small muted">'+esc(longDate(p.day,{weekday:'long',day:'numeric',month:'long'}))+'</span></div><button class="btn soft" data-act="kaza" data-key="'+p.key+'">'+esc(t('ovDone'))+'</button></div>'; });
-  return h+'</section>'; }
+  return h+'</section>'+linkCard('#maand',t('mMonth'),t('mMonthSub')); }
+
+var monthOff=0;
+function viewMonth(c){ var a=splitKey(c.today), dt=new Date(Date.UTC(a.y,a.m-1+monthOff,1)), y=dt.getUTCFullYear(), m=dt.getUTCMonth()+1, first=keyOf(y,m,1);
+  var h=back()+'<div class="between"><button class="btn line" data-act="month" data-d="-1" aria-label="‹">‹</button><h1 class="center" style="font-size:20px">'+esc(longDate(first,{month:'long',year:'numeric'}))+'</h1><button class="btn line" data-act="month" data-d="1" aria-label="›">›</button></div><span class="small muted center">'+esc(c.place.name)+'</span>';
+  h+='<section class="card" style="padding:8px"><div class="tablewrap"><table><thead><tr><th></th><th class="num">İms</th><th class="num">Gün</th><th class="num">Öğl</th><th class="num">İki</th><th class="num">Akş</th><th class="num">Yat</th></tr></thead><tbody>';
+  for(var k=first; splitKey(k).m===m; k=addDays(k,1)){ var x=timesFor(k);
+    h+='<tr'+(k===c.today?' class="today"':'')+'><td>'+esc(longDate(k,{weekday:'short',day:'numeric'}))+'</td><td class="num">'+hm(x.fajr)+'</td><td class="num">'+hm(x.rise)+'</td><td class="num">'+hm(x.noon)+'</td><td class="num">'+hm(x.asr)+'</td><td class="num">'+hm(x.set)+'</td><td class="num">'+hm(x.isha)+'</td></tr>'; }
+  return h+'</tbody></table></div></section><div class="note center">'+esc(t('srcCalc'))+'</div>'; }
 
 function linkCard(href,title,sub){ return '<a class="linkcard" href="'+href+'"><div class="col grow"><span class="title">'+esc(title)+'</span><span class="small muted">'+esc(sub)+'</span></div><span aria-hidden="true">›</span></a>'; }
-function viewMore(c){ var up=upcomingDays(c), miss=missedList(c).length;
+function viewMore(c){ var up=upcomingDays(c);
   return '<h1>'+esc(t('mTitle'))+'</h1>'+
-    linkCard('#overzicht',t('mOverview'),miss?t('kazaCount',{n:miss}):t('mOverviewSub'))+
+    linkCard('#vensters',t('mKerahat'),t('mKerahatSub'))+
+    linkCard('#maand',t('mMonth'),t('mMonthSub'))+
     linkCard('#dagen',t('mDays'),up.length?t('dNext')+': '+up[0].n[S.lang]+', '+whenTxt(c,up[0]):t('dNoMore'))+
     linkCard('#ramadan',t('mRam'),t('mRamSub'))+
     linkCard('#meldingen',t('mAlerts'),t('mAlertsSub'))+
@@ -307,6 +360,8 @@ function viewSettings(c){ var h=back()+'<h1>'+esc(t('mSettings'))+'</h1>';
   h+='<section class="card"><label for="city" style="font-size:15px;font-weight:700;color:var(--ink)">'+esc(t('place'))+'</label>'+(S.geo?'<span class="small muted">'+esc(t('myLoc'))+': '+esc(c.place.name)+' ('+S.geo.lat.toFixed(2)+', '+S.geo.lng.toFixed(2)+')</span>':'')+
      (OWN?'<button class="btn '+(S.geo?'soft':'')+' wide" data-act="geo">'+esc(t('useLoc'))+'</button><span class="small c-warn" id="geomsg" style="font-weight:600"></span>':'')+citySelect('city')+'</section>';
   h+='<section class="card"><h2>'+esc(t('look'))+'</h2><div class="segctl"><button data-act="mode" data-id="auto" aria-pressed="'+(S.mode==='auto')+'">'+esc(t('lookAuto'))+'</button><button data-act="mode" data-id="light" aria-pressed="'+(S.mode==='light')+'">'+esc(t('lookLight'))+'</button><button data-act="mode" data-id="dark" aria-pressed="'+(S.mode==='dark')+'">'+esc(t('lookDark'))+'</button></div><span class="small muted">'+esc(t('lookSub'))+'</span></section>';
+  h+='<section class="card"><div class="between"><div class="col"><h2>'+esc(t('work'))+'</h2><span class="small muted">'+esc(t('workSub'))+'</span></div><button class="switch" role="switch" aria-checked="'+(S.work.on?'true':'false')+'" aria-label="'+esc(t('work'))+'" data-act="work"><span><span></span></span></button></div>'+
+     (S.work.on?'<div class="grid2"><div class="col"><label for="wfrom">'+esc(t('workFrom'))+'</label><input id="wfrom" type="time" value="'+esc(S.work.from)+'"></div><div class="col"><label for="wto">'+esc(t('workTo'))+'</label><input id="wto" type="time" value="'+esc(S.work.to)+'"></div></div>':'')+'</section>';
   h+='<section class="card"><h2>'+esc(t('src'))+'</h2><span class="small muted">'+esc(t('srcText'))+'</span><span class="small muted">'+esc(t('indep'))+'</span></section>';
   return h; }
 
@@ -346,8 +401,8 @@ function alerts(c){ var s=S.set, now=c.now, closeB={l:t('close'),cls:'dark',act:
   if(s.cuma && c.wd==='Fri'){ var d=c.day.t.noon-now; if(d>0 && d<=3600000 && d>3540000) once('c'+c.today,function(){ toast(t('tCuma'),t('cumaAt',{t:hm(c.day.t.noon)}),[closeB]); play(s.sound); }); } }
 
 /* ---------- weergave ---------- */
-var ROUTES={vandaag:viewToday,vensters:viewWindows,kible:viewQibla,gids:viewGuide,meer:viewMore,dagen:viewDays,ramadan:viewRamadan,overzicht:viewOverview,meldingen:viewAlerts,instellingen:viewSettings};
-var NAV=[['vandaag','navToday'],['vensters','navWin'],['kible','navQibla'],['gids','navGuide'],['meer','navMore']];
+var ROUTES={vandaag:viewToday,vensters:viewWindows,kible:viewQibla,gids:viewGuide,meer:viewMore,dagen:viewDays,ramadan:viewRamadan,overzicht:viewOverview,maand:viewMonth,meldingen:viewAlerts,instellingen:viewSettings};
+var NAV=[['vandaag','navToday'],['overzicht','navWeek'],['kible','navQibla'],['gids','navGuide'],['meer','navMore']];
 function route(){ var h=(window.location.hash||'').replace('#',''); return ROUTES[h]?h:'vandaag'; }
 var lastSig='';
 function sig(c){ return [route(),c.today,c.cur?c.cur.key:'-',c.next?c.next.key:'-',c.ker?c.ker.id:'-',c.dark?1:0,inRamadan(c.today)?(c.now<c.day.t.fajr?0:c.now<c.day.t.set?1:2):'-'].join('|'); }
@@ -393,15 +448,22 @@ document.addEventListener('click',function(e){ var el=e.target.closest ? e.targe
   else if(act==='soundon'){ ac(); play(S.set.sound,true); }
   else if(act==='geo'){ askGeo(); return; }
   else if(act==='compass'){ startCompass(); return; }
+  else if(act==='compassoff'){ stopCompass(); }
+  else if(act==='mosq'){ findMosques(); return; }
+  else if(act==='month'){ monthOff+= +el.getAttribute('data-d'); }
+  else if(act==='work'){ S.work.on=!S.work.on; }
   else if(act==='start'){ var sel=document.getElementById('city0'); S.city=+sel.value; S.geo=null; S.chosen=true; clearTimes(); }
   save(); render(); });
 document.addEventListener('change',function(e){ var el=e.target;
   if(el.id==='city'){ S.city=+el.value; S.geo=null; S.chosen=true; clearTimes(); save(); render(); }
   else if(el.id==='city0'){ S.city=+el.value; }
+  else if((el.id==='wfrom' || el.id==='wto') && /^\d\d:\d\d$/.test(el.value)){ S.work[el.id==='wfrom'?'from':'to']=el.value; save(); render(); }
   else if(el.id==='file' && el.files && el.files[0]){ try{ if(customUrl) window.URL.revokeObjectURL(customUrl); customUrl=window.URL.createObjectURL(el.files[0]); customAudio=null; S.set.sound='eigen'; save(); render(); }catch(err){} } });
-window.addEventListener('hashchange',function(){ render(); try{ window.scrollTo(0,0); }catch(e){} });
+window.addEventListener('hashchange',function(){ if(compass.on && route()!=='kible') stopCompass(); render(); try{ window.scrollTo(0,0); }catch(e){} });
 
 render();
 window.setInterval(tick,1000);
+if(OWN && S.geo && window.navigator.geolocation){ try{ window.navigator.geolocation.getCurrentPosition(function(p){ var la=p.coords.latitude, lo=p.coords.longitude;
+  if(isFinite(la) && isFinite(lo) && Math.abs(la)<=62 && distKm(S.geo.lat,S.geo.lng,la,lo)>2){ S.geo={lat:+la.toFixed(4),lng:+lo.toFixed(4)}; clearTimes(); save(); render(); } }, function(){}, {maximumAge:600000,timeout:15000}); }catch(e){} }
 if(OWN && 'serviceWorker' in window.navigator){ try{ window.navigator.serviceWorker.register('sw.js').catch(function(){}); }catch(e){} }
 })();
