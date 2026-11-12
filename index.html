@@ -19,7 +19,7 @@
   --ground:#F3F6F4; --page:#E2E8E5; --card:#FFFFFF; --line:#DDE4E1; --line-soft:#EDF1EF; --line-strong:#C9D3D0;
   --ink:#14201D; --muted:#4E5B58; --accent:#0F4C45; --accent-ink:#0F4C45; --accent-soft:#DCEBE6; --accent-mid:#2C6A61;
   --gold:#F2C879; --warn:#8A4B08; --warn-ink:#5C3A0A; --warn-text:#8A4B08; --warn-soft:#FCEBCB; --warn-line:#E5B769;
-  --toast:#14201D; --off:#8A9693; --ring:#6B7875; --night:#10201D;
+  --toast:#14201D; --now:#FBEFD0; --off:#8A9693; --ring:#6B7875; --night:#10201D;
   --display:'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
   --body:Inter, 'Segoe UI', system-ui, sans-serif;
 }
@@ -28,7 +28,7 @@ body[data-mode="dark"]{
   --ground:#0E1715; --page:#080E0D; --card:#17231F; --line:#27352F; --line-soft:#1F2B27; --line-strong:#3B4A45;
   --ink:#E9F0ED; --muted:#A7B5B0; --accent:#14564E; --accent-ink:#7FD1BD; --accent-soft:#1C3A34; --accent-mid:#2C6A61;
   --warn:#8A4B08; --warn-ink:#F5DCA8; --warn-text:#F2C879; --warn-soft:#33260F; --warn-line:#6B4A14;
-  --toast:#2A3835; --off:#5F6E69; --ring:#8A9995; --night:#0A1412;
+  --toast:#2A3835; --now:#3A3018; --off:#5F6E69; --ring:#8A9995; --night:#0A1412;
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
@@ -52,6 +52,12 @@ button{cursor:pointer}
 .list{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2px 14px;display:flex;flex-direction:column}
 .list > .item{display:flex;align-items:center;gap:10px;min-height:56px;padding:6px 0;border-bottom:1px solid var(--line-soft)}
 .list > .item:last-child{border-bottom:none}
+.list{overflow:hidden}
+.list > .item.now{background:var(--now);margin:0 -14px;padding:6px 14px}
+.ar{font-family:'Geeza Pro','Noto Naskh Arabic','Amiri','Scheherazade New',serif;font-size:26px;line-height:2;text-align:right;direction:rtl}
+.ar.center{text-align:center}
+.vn{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;border-radius:13px;background:var(--accent-soft);color:var(--accent-ink);font-family:var(--display);font-size:13px;font-weight:700;vertical-align:middle;direction:ltr}
+.surebtn{border:none;background:transparent;padding:6px 0;min-height:44px;font:inherit;font-weight:600;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
 .title{font-size:15px;font-weight:600}
 .chip{font-size:13px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:5px 10px;border-radius:999px;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center}
 .chip.no{color:#fff;background:var(--warn)}
@@ -162,6 +168,7 @@ nav a[aria-current="page"]{color:var(--accent-ink);font-weight:700}
 <main id="app"></main>
 <nav aria-label="Menu"><div id="nav"></div></nav>
 <script src="calc.js"></script>
+<script src="sure.js"></script>
 <script src="i18n.js"></script>
 <script src="app.js"></script>
 </body>

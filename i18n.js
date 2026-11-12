@@ -1,6 +1,7 @@
 /* Teksten van de app: Nederlands, Turks, Engels */
 var L = {
 nl: {
+duaTitle:'Dua van vandaag',aAsk:'Vraag later of je hebt gebeden',aAskSub:'Een tijdje na het begin van het gebed',aAskMin:'Na hoeveel minuten',tAsk:'Heb je {p} al gebeden?',yes:'Ja, gebeden',sureNo:'Sure {n} · {v} verzen',sureSrc:'Arabische tekst: quranenc.com',
 navWeek:'Week',dayTitle:'Jouw dag',dayWork:'Tijdens je werk: {p}.',dayWorkNone:'Vandaag valt geen gebed helemaal in je werktijd.',dayOne:'Druk? Bid öğle om {a} en ikindi direct daarna om {b}.',dayTight:'Kortste gebedstijd vandaag: {p}, {a} tot {b}.',dayEve:'Vanavond: Akşam {a}, Yatsı {b}.',dayTom:'Morgen: imsak {a}, zonsopgang {b}.',daySet:'Werktijden instellen',hU:'u',work:'Werktijden',workSub:'Dan zie je welke gebeden in je werktijd vallen.',workFrom:'Van',workTo:'Tot',mKerahat:'Kerahat-tijden',mKerahatSub:'Wanneer je wel en niet mag bidden',mMonth:'Maandtabel',mMonthSub:'Alle tijden van de maand',qStop:'Kompas stoppen',mosFind:'Zoek moskeeën in de buurt',mosBusy:'Moskeeën zoeken…',mosFail:'Zoeken is niet gelukt. Probeer het later opnieuw of open de kaart.',mosNone:'Geen moskeeën gevonden binnen 12 km.',mosNoName:'Moskee',mosRoute:'Route',mosSrc:'Gegevens: OpenStreetMap. De lijst kan onvolledig zijn.',
 appName:'Gebedstijden',welcome:'Welkom',welcomeSub:'Kies waar je bent. De app doet de rest.',useLoc:'Gebruik mijn locatie',locBusy:'Locatie zoeken…',locFail:'Locatie is niet beschikbaar. Kies je stad.',orCity:'Of kies je stad',cont:'Verder',myLoc:'Mijn locatie',
 navToday:'Vandaag',navWin:'Kerahat',navQibla:'Kıble',navGuide:'Gids',navMore:'Meer',
@@ -29,7 +30,7 @@ n_farz4:'Na rekat 2: Ettehiyyatü. Laatste zit: Ettehiyyatü, Salli-Barik, Rabbe
 n_sunnetG:'Na rekat 2: Ettehiyyatü en Salli-Barik. Rekat 3 begint weer met Sübhaneke.',
 n_vitir:'Rekat 3: na de sure tekbir en de Kunut-dua’s, daarna rükû.',
 gImam:'Met de imam',n_cuma:'Achter de imam lees je zelf geen Fatiha of sure. Het cuma-gebed komt in de plaats van öğle.',
-gFoot:'De sure’s zijn een voorstel. Je mag andere kiezen.',
+gFoot:'Tik op een sure om hem te lezen. De sure’s zijn een voorstel; je mag andere kiezen.',
 dTitle:'Heilige dagen en nachten',dToday:'Vandaag',dNext:'Eerstvolgende',dIn:'over {n} dagen',dIn1:'morgen',dIn0:'vandaag',dEve:'avond',dCal:'Zet in agenda',dNoMore:'Er zijn geen latere dagen bekend. Werk de app bij.',dSrc:'Bron: Diyanet, dinî günler takvimi 2026 en 2027',
 rTitle:'Ramadan',rStarts:'Ramadan begint over {n} dagen',rFirst:'Maandag 8 februari 2027 in {c}',rDay:'Ramadan · dag {n}',rIftarIn:'İftar over',rSahurIn:'Sahur nog',rIftarWas:'İftar was om {t}',
 rImsak:'İmsak',rIftar:'İftar',rFast:'Ik vast vandaag',rFastSub:'Gemiste dagen haal je later in',rTeravih:'Teravih na yatsı, vanaf {t}',rSahurTom:'Sahur morgen tot {t}',
@@ -48,6 +49,7 @@ close:'Sluit',iPrayed:'Ik heb gebeden',
 wind:['N','NO','O','ZO','Z','ZW','W','NW'],locale:'nl-NL',mosqueWord:'moskee'
 },
 tr: {
+duaTitle:'Günün duası',aAsk:'Kılıp kılmadığımı sonra sor',aAskSub:'Vakit girdikten bir süre sonra',aAskMin:'Kaç dakika sonra',tAsk:'{p} namazını kıldınız mı?',yes:'Evet, kıldım',sureNo:'{n}. sure · {v} ayet',sureSrc:'Arapça metin: quranenc.com',
 navWeek:'Hafta',dayTitle:'Gününüz',dayWork:'Mesai içinde: {p}.',dayWorkNone:'Hiçbir vakit tamamen mesaiye denk gelmiyor.',dayOne:'Yoğun musunuz? Öğleyi {a}, ikindiyi hemen ardından {b} saatinde kılın.',dayTight:'Bugünün en kısa vakti: {p}, {a}–{b}.',dayEve:'Bu akşam: Akşam {a}, Yatsı {b}.',dayTom:'Yarın: imsak {a}, güneş {b}.',daySet:'Mesai saatlerini ayarla',hU:'sa',work:'Mesai saatleri',workSub:'İş günlerinde hangi vakitlerin mesaiye denk geldiğini görürsünüz.',workFrom:'Başlangıç',workTo:'Bitiş',mKerahat:'Kerahat vakitleri',mKerahatSub:'Ne zaman namaz kılınır, ne zaman kılınmaz',mMonth:'Aylık tablo',mMonthSub:'Ayın bütün vakitleri',qStop:'Pusulayı kapat',mosFind:'Yakındaki camileri bul',mosBusy:'Camiler aranıyor…',mosFail:'Arama başarısız oldu. Daha sonra deneyin veya haritayı açın.',mosNone:'12 km içinde cami bulunamadı.',mosNoName:'Cami',mosRoute:'Yol tarifi',mosSrc:'Veri: OpenStreetMap. Liste eksik olabilir.',
 appName:'Namaz Vakitleri',welcome:'Hoş geldiniz',welcomeSub:'Bulunduğunuz yeri bir kez seçin. Gerisini uygulama halleder.',useLoc:'Konumumu kullan',locBusy:'Konum aranıyor…',locFail:'Konum alınamadı. Şehrinizi seçin.',orCity:'Veya şehrinizi seçin',cont:'Devam',myLoc:'Konumum',
 navToday:'Bugün',navWin:'Kerahat',navQibla:'Kıble',navGuide:'Rehber',navMore:'Diğer',
@@ -76,7 +78,7 @@ n_farz4:'2. rekâttan sonra: Ettehiyyatü. Son oturuş: Ettehiyyatü, Salli-Bari
 n_sunnetG:'2. rekâttan sonra: Ettehiyyatü ve Salli-Barik. 3. rekât yine Sübhaneke ile başlar.',
 n_vitir:'3. rekât: sureden sonra tekbir ve Kunut duaları, sonra rükû.',
 gImam:'İmamla',n_cuma:'İmamın arkasında Fatiha ve sure okunmaz. Cuma namazı öğlenin yerine kılınır.',
-gFoot:'Sureler, Kur’an sırasına göre kısa surelerden bir öneridir. Başka sure de okuyabilirsiniz.',
+gFoot:'Okumak için bir sureye dokunun. Sureler bir öneridir; başka sure de okuyabilirsiniz.',
 dTitle:'Dinî gün ve geceler',dToday:'Bugün',dNext:'Sıradaki',dIn:'{n} gün sonra',dIn1:'yarın',dIn0:'bugün',dEve:'akşamı',dCal:'Takvime ekle',dNoMore:'Daha sonraki günler bilinmiyor. Uygulamayı güncelleyin.',dSrc:'Kaynak: Diyanet, dinî günler takvimi 2026 ve 2027',
 rTitle:'Ramazan',rStarts:'Ramazan’a {n} gün kaldı',rFirst:'8 Şubat 2027 Pazartesi, {c}',rDay:'Ramazan · {n}. gün',rIftarIn:'İftara kalan',rSahurIn:'Sahurun bitmesine',rIftarWas:'İftar {t} saatindeydi',
 rImsak:'İmsak',rIftar:'İftar',rFast:'Bugün oruçluyum',rFastSub:'Tutulamayan günler sonra kaza edilir',rTeravih:'Teravih yatsıdan sonra, {t} itibarıyla',rSahurTom:'Yarın sahur {t} saatine kadar',
@@ -95,6 +97,7 @@ close:'Kapat',iPrayed:'Kıldım',
 wind:['K','KD','D','GD','G','GB','B','KB'],locale:'tr-TR',mosqueWord:'cami'
 },
 en: {
+duaTitle:'Dua of the day',aAsk:'Ask later whether I prayed',aAskSub:'A while after the prayer starts',aAskMin:'After how many minutes',tAsk:'Have you prayed {p} yet?',yes:'Yes, I prayed',sureNo:'Surah {n} · {v} verses',sureSrc:'Arabic text: quranenc.com',
 navWeek:'Week',dayTitle:'Your day',dayWork:'During work: {p}.',dayWorkNone:'No prayer falls entirely within your working hours.',dayOne:'Busy? Pray öğle at {a} and ikindi straight after at {b}.',dayTight:'Shortest prayer window today: {p}, {a} to {b}.',dayEve:'Tonight: Akşam {a}, Yatsı {b}.',dayTom:'Tomorrow: imsak {a}, sunrise {b}.',daySet:'Set working hours',hU:'h',work:'Working hours',workSub:'On working days you see which prayers fall within your working hours.',workFrom:'From',workTo:'To',mKerahat:'Kerahat times',mKerahatSub:'When you may and may not pray',mMonth:'Monthly table',mMonthSub:'All times of the month',qStop:'Stop compass',mosFind:'Find mosques nearby',mosBusy:'Finding mosques…',mosFail:'The search failed. Try again later or open the map.',mosNone:'No mosques found within 12 km.',mosNoName:'Mosque',mosRoute:'Route',mosSrc:'Data: OpenStreetMap. The list may be incomplete.',
 appName:'Prayer Times',welcome:'Welcome',welcomeSub:'Choose where you are once. The app does the rest.',useLoc:'Use my location',locBusy:'Finding your location…',locFail:'Location is not available. Choose your city.',orCity:'Or choose your city',cont:'Continue',myLoc:'My location',
 navToday:'Today',navWin:'Kerahat',navQibla:'Qibla',navGuide:'Guide',navMore:'More',
@@ -123,7 +126,7 @@ n_farz4:'After rakat 2: Ettehiyyatü. Final sitting: Ettehiyyatü, Salli-Barik, 
 n_sunnetG:'After rakat 2: Ettehiyyatü and Salli-Barik. Rakat 3 starts again with Sübhaneke.',
 n_vitir:'Rakat 3: after the surah, takbir and the Kunut duas, then ruku.',
 gImam:'With the imam',n_cuma:'Behind the imam you do not recite Fatiha or a surah yourself. The cuma prayer replaces öğle.',
-gFoot:'The surahs are a suggestion of short surahs in the order of the Quran. You may choose others.',
+gFoot:'Tap a surah to read it. The surahs are a suggestion; you may choose others.',
 dTitle:'Holy days and nights',dToday:'Today',dNext:'Next',dIn:'in {n} days',dIn1:'tomorrow',dIn0:'today',dEve:' evening',dCal:'Add to calendar',dNoMore:'No later days are known. Update the app.',dSrc:'Source: Diyanet, religious days calendar 2026 and 2027',
 rTitle:'Ramadan',rStarts:'Ramadan starts in {n} days',rFirst:'Monday 8 February 2027 in {c}',rDay:'Ramadan · day {n}',rIftarIn:'Iftar in',rSahurIn:'Sahur ends in',rIftarWas:'Iftar was at {t}',
 rImsak:'İmsak',rIftar:'İftar',rFast:'I am fasting today',rFastSub:'Missed days can be made up later',rTeravih:'Teravih after yatsı, from {t}',rSahurTom:'Sahur tomorrow until {t}',

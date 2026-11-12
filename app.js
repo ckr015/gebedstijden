@@ -55,7 +55,7 @@ var KMIN=45*60000, K2=10*60000; // kerahat na zonsopgang en voor zonsondergang; 
 /* ---------- toestand ---------- */
 var KEY='gebedstijden.v1';
 var S={lang:null,city:0,geo:null,chosen:false,prayed:{},kaza:{},fasted:{},guide:'',mode:'auto',sinceMs:0,work:{on:false,from:'09:00',to:'17:30'},
-  set:{start:true,remind:true,remindMin:15,ikindi:true,kerahat:false,cuma:true,sound:'bel'}};
+  set:{start:true,ask:true,askMin:20,remind:true,remindMin:15,ikindi:true,kerahat:false,cuma:true,sound:'bel'}};
 (function load(){ try{ var raw=window.localStorage.getItem(KEY); if(raw){ var o=JSON.parse(raw);
     for(var k in o){ if(k==='set'){ for(var j in o.set) S.set[j]=o.set[j]; } else S[k]=o[k]; }
     if(o.cityChosen) S.chosen=true; } }catch(e){}
@@ -168,22 +168,39 @@ function viewToday(c){ var p=c.place, d=c.day, x=d.t, h='', hj=hijri(c.today);
   if(inRamadan(c.today)) h+=ramadanCard(c);
   var rows=[
     {id:'sabah',n:t('sabahName'),time:x.fajr,note:t('until',{t:hm(x.rise)})},
-    {id:'gunes',n:pname('gunes'),time:x.rise,note:t('kerahatTill',{t:hm(x.rise+KMIN)})},
+    {id:'gunes',n:pname('gunes'),time:x.rise,note:''},
     {id:'ogle',n:(c.wd==='Fri'?'Cuma · ':'')+pname('ogle'),time:x.noon,note:t('until',{t:hm(x.asr)})},
-    {id:'ikindi',n:pname('ikindi'),time:x.asr,note:t('kerahatFrom',{t:hm(x.set-KMIN)})},
+    {id:'ikindi',n:pname('ikindi'),time:x.asr,note:t('until',{t:hm(x.set)})},
     {id:'aksam',n:pname('aksam'),time:x.set,note:t('until',{t:hm(x.isha)})},
     {id:'yatsi',n:pname('yatsi'),time:x.isha,note:t('until',{t:hm(c.tom.t.fajr)})}], cnt=0;
   h+='<section class="list">';
   rows.forEach(function(r){ var key=c.today+':'+r.id, isNow=c.cur && c.cur.key===key, done=prayed(key); if(done && r.id!=='gunes') cnt++;
-    h+='<div class="item"><div class="col grow"><div class="row" style="gap:8px"><span class="title" style="font-size:16px">'+esc(r.n)+'</span>'+(isNow?'<span class="chip now">'+esc(t('now').toLocaleUpperCase(t('locale')))+'</span>':'')+'</div><span class="small muted">'+esc(r.note)+'</span></div>'+
+    h+='<div class="item'+(isNow?' now':'')+'"'+(isNow?' aria-current="true"':'')+'><div class="col grow"><span class="title" style="font-size:16px">'+esc(r.n)+'</span>'+(r.note?'<span class="small muted">'+esc(r.note)+'</span>':'')+'</div>'+
        '<span class="time">'+hm(r.time)+'</span>'+
        (r.id==='gunes' ? '<span class="nop">'+esc(t('noPrayer'))+'</span>'
         : '<button class="check'+(done?' on':'')+'" data-act="pray" data-key="'+key+'" aria-pressed="'+(done?'true':'false')+'" aria-label="'+esc(t('prayedBtn',{p:pname(r.id)}))+'">'+IC.check+'</button>')+'</div>'; });
   var miss=missedList(c).length;
-  h+='</section>'+dayCard(c)+'<a href="#overzicht" class="small center" style="font-weight:600;text-decoration:none;min-height:44px;display:flex;align-items:center;justify-content:center">'+esc(t('summary',{n:cnt}))+(miss?' · '+esc(t('kazaCount',{n:miss})):'')+' ›</a>'+
+  h+='</section>'+dayCard(c)+duaCard(c)+'<a href="#overzicht" class="small center" style="font-weight:600;text-decoration:none;min-height:44px;display:flex;align-items:center;justify-content:center">'+esc(t('summary',{n:cnt}))+(miss?' · '+esc(t('kazaCount',{n:miss})):'')+' ›</a>'+
      '<div class="note center">'+esc(t('srcCalc'))+'</div>';
   return h; }
 
+var DUAS=[
+{r:'Bakara 2:201',nl:'Onze Heer, geef ons het goede in deze wereld en het goede in het hiernamaals, en bescherm ons tegen de straf van het vuur.',tr:'Rabbimiz, bize dünyada iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.',en:'Our Lord, give us good in this world and good in the hereafter, and protect us from the punishment of the fire.'},
+{r:'Âl-i İmrân 3:8',nl:'Onze Heer, laat onze harten niet afdwalen nadat U ons hebt geleid, en schenk ons barmhartigheid van Uw kant. U bent de Schenker.',tr:'Rabbimiz, bizi doğru yola ilettikten sonra kalplerimizi eğriltme. Bize katından rahmet bağışla. Şüphesiz sen çok bağışlayansın.',en:'Our Lord, do not let our hearts stray after You have guided us, and grant us mercy from Yourself. You are the Giver.'},
+{r:'İbrâhîm 14:40',nl:'Mijn Heer, maak mij en mijn nakomelingen tot mensen die het gebed onderhouden. Onze Heer, aanvaard mijn gebed.',tr:'Rabbim, beni ve soyumdan gelenleri namazı dosdoğru kılanlardan eyle. Rabbimiz, duamı kabul et.',en:'My Lord, make me and my descendants people who keep up the prayer. Our Lord, accept my prayer.'},
+{r:'İbrâhîm 14:41',nl:'Onze Heer, vergeef mij, mijn ouders en de gelovigen op de dag van de afrekening.',tr:'Rabbimiz, hesap görülecek günde beni, anamı babamı ve müminleri bağışla.',en:'Our Lord, forgive me, my parents and the believers on the day of reckoning.'},
+{r:'Furkân 25:74',nl:'Onze Heer, schenk ons vreugde in onze echtgenoten en kinderen, en maak ons tot een voorbeeld voor wie U vrezen.',tr:'Rabbimiz, eşlerimizi ve çocuklarımızı bize göz aydınlığı kıl ve bizi takva sahiplerine önder eyle.',en:'Our Lord, grant us joy in our spouses and children, and make us an example for those who are mindful of You.'},
+{r:'A’râf 7:23',nl:'Onze Heer, wij hebben onszelf onrecht aangedaan. Als U ons niet vergeeft en ons niet genadig bent, horen wij zeker bij de verliezers.',tr:'Rabbimiz, biz kendimize zulmettik. Bizi bağışlamaz ve bize acımazsan mutlaka ziyana uğrayanlardan oluruz.',en:'Our Lord, we have wronged ourselves. If You do not forgive us and have mercy on us, we will surely be among the losers.'},
+{r:'Mü’minûn 23:118',nl:'Mijn Heer, vergeef en wees genadig. U bent de beste van de barmhartigen.',tr:'Rabbim, bağışla ve merhamet et. Sen merhamet edenlerin en hayırlısısın.',en:'My Lord, forgive and have mercy. You are the best of the merciful.'},
+{r:'Kehf 18:10',nl:'Onze Heer, schenk ons barmhartigheid van Uw kant en wijs ons de juiste weg in onze zaak.',tr:'Rabbimiz, bize katından rahmet ver ve işimizde bize doğruyu göster.',en:'Our Lord, grant us mercy from Yourself and guide us rightly in our affair.'},
+{r:'Haşr 59:10',nl:'Onze Heer, vergeef ons en onze broeders die ons in het geloof zijn voorgegaan, en laat in onze harten geen wrok zijn tegen de gelovigen. Onze Heer, U bent mild en genadevol.',tr:'Rabbimiz, bizi ve bizden önce iman etmiş kardeşlerimizi bağışla. Kalplerimizde iman edenlere karşı kin bırakma. Rabbimiz, sen çok şefkatli, çok merhametlisin.',en:'Our Lord, forgive us and our brothers who came before us in faith, and leave no ill will in our hearts towards the believers. Our Lord, You are kind and merciful.'},
+{r:'Tâhâ 20:114',nl:'Mijn Heer, vermeerder mijn kennis.',tr:'Rabbim, ilmimi artır.',en:'My Lord, increase me in knowledge.'},
+{r:'Enbiyâ 21:87',nl:'Er is geen god dan U. U bent verheven. Ik heb werkelijk onrecht gedaan.',tr:'Senden başka ilah yoktur. Seni tenzih ederim. Gerçekten ben zalimlerden oldum.',en:'There is no god but You. Glory be to You. I have truly done wrong.'},
+{r:'İsrâ 17:24',nl:'Mijn Heer, wees hun genadig, zoals zij mij hebben opgevoed toen ik klein was.',tr:'Rabbim, onlar beni küçükken nasıl yetiştirdilerse sen de onlara merhamet et.',en:'My Lord, have mercy on them, as they raised me when I was small.'},
+{r:'Bakara 2:127',nl:'Onze Heer, aanvaard dit van ons. U bent de Alhorende, de Alwetende.',tr:'Rabbimiz, bizden kabul buyur. Şüphesiz sen hakkıyla işiten, hakkıyla bilensin.',en:'Our Lord, accept this from us. You are the All-Hearing, the All-Knowing.'},
+{r:'Tâhâ 20:25–28',nl:'Mijn Heer, verruim mijn borst, maak mijn taak licht en maak de knoop in mijn tong los, zodat zij mijn woorden begrijpen.',tr:'Rabbim, gönlüme ferahlık ver, işimi kolaylaştır, dilimdeki düğümü çöz ki sözümü anlasınlar.',en:'My Lord, open my heart, make my task easy and untie the knot in my tongue, so that they understand my words.'}];
+function duaCard(c){ if(typeof DUA_AR==='undefined') return ''; var n=((dayDiff('2026-01-01',c.today)%DUAS.length)+DUAS.length)%DUAS.length, d=DUAS[n];
+  return '<section class="card" style="gap:6px"><span class="small muted" style="font-weight:600">'+esc(t('duaTitle'))+'</span><div class="ar" lang="ar" dir="rtl" style="font-size:20px">'+esc(DUA_AR[n])+'</div><span>'+esc(d[S.lang])+'</span><span class="small muted">'+esc(d.r)+'</span></section>'; }
 function mins(ms,tz){ var p=parts(ms,tz); return p.h*60+p.mi; }
 function dur(ms){ var m=Math.round(ms/60000), h=Math.floor(m/60); return (h?h+' '+t('hU')+' ':'')+(m%60)+' '+t('min'); }
 function workRange(c){ if(!S.work.on || c.wd==='Sat' || c.wd==='Sun') return null; var a=S.work.from.split(':'), b=S.work.to.split(':'), ws=+a[0]*60+ +a[1], we=+b[0]*60+ +b[1]; return we>ws?{ws:ws,we:we}:null; }
@@ -271,11 +288,18 @@ function viewGuide(c){ var sel=S.guide || (c.cur?c.cur.id:c.next.id); if(!S.guid
   h+='</div>';
   GUIDE[sel].forEach(function(u){ var n=u.s.length;
     h+='<section class="card"><h2>'+esc(t('u_'+u.k))+' · '+n+' '+esc(t('gRekat'))+'</h2>';
-    u.s.forEach(function(s,i){ h+='<div class="row"><span class="rk">'+(i+1)+'</span><span class="title">'+(u.imam?esc(t('gImam')):s?'Fatiha + '+s:esc(t('gOnly')))+'</span></div>'; });
+    u.s.forEach(function(s,i){ h+='<div class="row"><span class="rk">'+(i+1)+'</span><span class="title">'+(u.imam?esc(t('gImam')):s?sureBtn('Fatiha','Fatiha')+' + '+sureBtn(s,s):sureBtn('Fatiha',t('gOnly')))+'</span></div>'; });
     var note= u.imam?t('n_cuma'): u.k==='vitir'?t('n_vitir'): u.k==='sunnetG'?t('n_sunnetG'): (n>2?t('n_farz4'):t('n_std'));
     h+='<span class="small muted">'+esc(note)+'</span></section>'; });
   h+='<div class="note center">'+esc(t('gFoot'))+'</div>'; return h; }
 
+var curSure='Fatiha';
+function sureBtn(id,label){ return (typeof SURES!=='undefined' && SURES[id]) ? '<button class="surebtn" data-act="sure" data-id="'+esc(id)+'">'+esc(label)+'</button>' : esc(label); }
+function viewSure(){ var su=(typeof SURES!=='undefined')?SURES[curSure]:null; if(!su) return '<a href="#gids" class="back">‹ '+esc(t('gTitle'))+'</a>';
+  var h='<a href="#gids" class="back">‹ '+esc(t('gTitle'))+'</a><header class="col"><h1>'+esc(curSure)+'</h1><span class="small muted">'+esc(t('sureNo',{n:su.no,v:su.v.length}))+'</span></header><section class="card" lang="ar" dir="rtl">';
+  if(su.no!==1) h+='<div class="ar center" style="color:var(--muted)">'+esc(SURES.Fatiha.v[0])+'</div>';
+  su.v.forEach(function(v,i){ h+='<div class="ar">'+esc(v)+' <span class="vn">'+(i+1)+'</span></div>'; });
+  return h+'</section><div class="note center">'+esc(t('sureSrc'))+'</div>'; }
 function icsLink(d){ var a=d.d.replace(/-/g,''), b=addDays(d.d,1).replace(/-/g,'');
   var txt=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//gebedstijden//NL','BEGIN:VEVENT','UID:'+a+'@gebedstijden','DTSTAMP:'+a+'T000000Z','DTSTART;VALUE=DATE:'+a,'DTEND;VALUE=DATE:'+b,'SUMMARY:'+d.n[S.lang],'END:VEVENT','END:VCALENDAR'].join('\r\n');
   return 'data:text/calendar;charset=utf-8,'+encodeURIComponent(txt); }
@@ -342,6 +366,8 @@ function viewAlerts(){ var s=S.set, h=back()+'<h1>'+esc(t('mAlerts'))+'</h1>';
               : '<button class="btn wide" data-act="soundon">'+esc(t('soundEnable'))+'</button>';
   h+='<section class="list"><div class="item"><h2 class="grow">'+esc(t('alerts'))+'</h2></div>'+
      '<div class="item"><span class="title grow">'+esc(t('aStart'))+'</span>'+sw('start',s.start,t('aStart'))+'</div>'+
+     '<div class="item"><div class="col grow"><span class="title">'+esc(t('aAsk'))+'</span><span class="small muted">'+esc(t('aAskSub'))+'</span></div>'+sw('ask',s.ask,t('aAsk'))+'</div>'+
+     '<div class="item"><span class="title grow">'+esc(t('aAskMin'))+'</span>'+stepper('askMin',s.askMin,5,60,5)+'</div>'+
      '<div class="item"><div class="col grow"><span class="title">'+esc(t('aRemind'))+'</span><span class="small muted">'+esc(t('aRemindSub'))+'</span></div>'+sw('remind',s.remind,t('aRemind'))+'</div>'+
      '<div class="item"><span class="title grow">'+esc(t('aMin'))+'</span>'+stepper('remindMin',s.remindMin,5,45,5)+'</div>'+
      '<div class="item"><span class="title grow">'+esc(t('aIkindi'))+'</span>'+sw('ikindi',s.ikindi,t('aIkindi'))+'</div>'+
@@ -389,7 +415,8 @@ function toast(title,sub,btns,autoMs){ var h='<strong style="font-size:16px">'+e
 function alerts(c){ var s=S.set, now=c.now, closeB={l:t('close'),cls:'dark',act:'closetoast'};
   function once(id,fn){ if(!fired[id]){ fired[id]=1; fn(); } }
   if(c.cur){ var p=c.cur, nm=pname(p.id);
-    if(s.start && now-p.start<60000) once('s'+p.key,function(){ toast(t('tStart',{p:nm}),t('tStartSub',{t:hm(p.end)}),[{l:t('iPrayed'),cls:'gold',act:'toastpray',key:p.key},closeB]); play(s.sound); });
+    if(s.start && now-p.start<60000) once('s'+p.key,function(){ toast(t('tStart',{p:nm}),t('tStartSub',{t:hm(p.end)}),[closeB]); play(s.sound); });
+    if(s.ask && !prayed(p.key)){ var since=now-p.start; if(since>=s.askMin*60000 && since<s.askMin*60000+60000 && now<p.end) once('a'+p.key,function(){ toast(t('tAsk',{p:nm}),'',[{l:t('yes'),cls:'gold',act:'toastpray',key:p.key},closeB]); play(s.sound); }); }
     if(snooze[p.key] && now>=snooze[p.key]){ delete snooze[p.key]; delete fired['r'+p.key]; }
     if(s.remind && !prayed(p.key) && !snooze[p.key]){ var dl=(p.id==='ikindi' && s.ikindi)?p.end-KMIN:p.end, left=dl-now;
       if(left>0 && left<=s.remindMin*60000) once('r'+p.key,function(){ toast(t('tRemind',{n:Math.ceil(left/60000),p:nm}),t('tRemindSub',{p:nm}),[{l:t('iPrayed'),cls:'gold',act:'toastpray',key:p.key},{l:t('snooze'),cls:'dark',act:'snooze',key:p.key},closeB]); play(s.sound); }); } }
@@ -397,7 +424,7 @@ function alerts(c){ var s=S.set, now=c.now, closeB={l:t('close'),cls:'dark',act:
   if(s.cuma && c.wd==='Fri'){ var d=c.day.t.noon-now; if(d>0 && d<=3600000 && d>3540000) once('c'+c.today,function(){ toast(t('tCuma'),t('cumaAt',{t:hm(c.day.t.noon)}),[closeB]); play(s.sound); }); } }
 
 /* ---------- weergave ---------- */
-var ROUTES={vandaag:viewToday,vensters:viewWindows,kible:viewQibla,gids:viewGuide,meer:viewMore,dagen:viewDays,ramadan:viewRamadan,overzicht:viewOverview,maand:viewMonth,meldingen:viewAlerts,instellingen:viewSettings};
+var ROUTES={vandaag:viewToday,vensters:viewWindows,kible:viewQibla,gids:viewGuide,meer:viewMore,dagen:viewDays,ramadan:viewRamadan,overzicht:viewOverview,maand:viewMonth,sure:viewSure,meldingen:viewAlerts,instellingen:viewSettings};
 var NAV=[['vandaag','navToday'],['kible','navQibla'],['gids','navGuide'],['meer','navMore']];
 function route(){ var h=(window.location.hash||'').replace('#',''); return ROUTES[h]?h:'vandaag'; }
 var lastSig='';
@@ -407,7 +434,7 @@ function render(){ var c=ctx(), r=route(); lastSig=sig(c);
   document.body.setAttribute('data-mode',c.dark?'dark':'light');
   if(!S.chosen){ document.getElementById('app').innerHTML=viewWelcome(); document.getElementById('nav').innerHTML=''; return; }
   document.getElementById('app').innerHTML=ROUTES[r](c);
-  var navId=NAV.some(function(x){ return x[0]===r; })?r:'meer', n='';
+  var navId=NAV.some(function(x){ return x[0]===r; })?r:(r==='sure'?'gids':r==='vensters'?'vandaag':'meer'), n='';
   NAV.forEach(function(x){ n+='<a href="#'+x[0]+'"'+(x[0]===navId?' aria-current="page"':'')+'><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC.nav[x[0]]+'</svg>'+esc(t(x[1]))+'</a>'; });
   document.getElementById('nav').innerHTML=n; }
 function tick(){ var c=ctx(), now=c.now, ae=document.activeElement, typing=ae && /^(INPUT|SELECT)$/.test(ae.tagName);
@@ -437,6 +464,7 @@ document.addEventListener('click',function(e){ var el=e.target.closest ? e.targe
   else if(act==='toggle'){ S.set[id]=!S.set[id]; }
   else if(act==='step'){ var v=S.set[id]+(+el.getAttribute('data-d')); S.set[id]=Math.max(+el.getAttribute('data-min'),Math.min(+el.getAttribute('data-max'),v)); }
   else if(act==='guide'){ S.guide=id; }
+  else if(act==='sure'){ curSure=id; if(route()!=='sure'){ window.location.hash='#sure'; return; } }
   else if(act==='lang'){ S.lang=id; }
   else if(act==='mode'){ S.mode=id; }
   else if(act==='sound'){ S.set.sound=id; play(id,true); }
