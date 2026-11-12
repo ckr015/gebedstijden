@@ -1,5 +1,5 @@
 /* Offline-werking: eerst het netwerk proberen, anders de opgeslagen kopie. */
-var CACHE = 'gebedstijden-v6';
+var CACHE = 'gebedstijden-v7';
 var FILES = ['./', 'index.html', 'calc.js', 'sure.js', 'i18n.js', 'app.js', 'icon.png', 'icon-512.png', 'manifest.webmanifest'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));

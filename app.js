@@ -295,11 +295,29 @@ function viewGuide(c){ var sel=S.guide || (c.cur?c.cur.id:c.next.id); if(!S.guid
 
 var curSure='Fatiha';
 function sureBtn(id,label){ return (typeof SURES!=='undefined' && SURES[id]) ? '<button class="surebtn" data-act="sure" data-id="'+esc(id)+'">'+esc(label)+'</button>' : esc(label); }
-function viewSure(){ var su=(typeof SURES!=='undefined')?SURES[curSure]:null; if(!su) return '<a href="#gids" class="back">‹ '+esc(t('gTitle'))+'</a>';
-  var h='<a href="#gids" class="back">‹ '+esc(t('gTitle'))+'</a><header class="col"><h1>'+esc(curSure)+'</h1><span class="small muted">'+esc(t('sureNo',{n:su.no,v:su.v.length}))+'</span></header><section class="card" lang="ar" dir="rtl">';
-  if(su.no!==1) h+='<div class="ar center" style="color:var(--muted)">'+esc(SURES.Fatiha.v[0])+'</div>';
-  su.v.forEach(function(v,i){ h+='<div class="ar">'+esc(v)+' <span class="vn">'+(i+1)+'</span></div>'; });
-  return h+'</section><div class="note center">'+esc(t('sureSrc'))+'</div>'; }
+// Turkse uitspraak (okunuş) per vers. Hulpmiddel bij het leren; laten nalezen door een imam.
+var BESMELE='Bismillâhirrahmânirrahîm.';
+var OKUNUS={
+'Fatiha':['Bismillâhirrahmânirrahîm.','Elhamdü lillâhi rabbil’âlemîn.','Errahmânirrahîm.','Mâliki yevmiddîn.','İyyâke na’büdü ve iyyâke neste’în.','İhdinessırâtel müstakîm.','Sırâtallezîne en’amte aleyhim ğayril mağdûbi aleyhim veleddâllîn.'],
+'Fil':['Elem tera keyfe fe’ale rabbüke biashâbilfîl.','Elem yec’al keydehüm fî tadlîl.','Ve ersele aleyhim tayran ebâbîl.','Termîhim bihicâratin min siccîl.','Fece’alehüm ke’asfin me’kûl.'],
+'Kureyş':['Li’îlâfi kureyş.','Îlâfihim rıhleteşşitâi vessayf.','Felya’büdû rabbe hâzelbeyt.','Ellezî et’amehüm min cû’in ve âmenehüm min havf.'],
+'Maun':['Era’eytellezî yükezzibü biddîn.','Fezâlikellezî yedu’ulyetîm.','Ve lâ yehuddu alâ ta’âmilmiskîn.','Feveylün lilmusallîn.','Ellezîne hüm an salâtihim sâhûn.','Ellezîne hüm yürâûn.','Ve yemne’ûnelmâ’ûn.'],
+'Kevser':['İnnâ a’taynâkelkevser.','Fesalli lirabbike venhar.','İnne şânieke hüvel’ebter.'],
+'Kâfirun':['Kul yâ eyyühelkâfirûn.','Lâ a’büdü mâ ta’büdûn.','Ve lâ entüm âbidûne mâ a’büd.','Ve lâ ene âbidün mâ abedtüm.','Ve lâ entüm âbidûne mâ a’büd.','Leküm dînüküm veliye dîn.'],
+'Nasr':['İzâ câe nasrullâhi velfeth.','Ve raeytennâse yedhulûne fî dînillâhi efvâcâ.','Fesebbih bihamdi rabbike vestağfirh. İnnehû kâne tevvâbâ.'],
+'İhlas':['Kul hüvallâhü ehad.','Allâhüssamed.','Lem yelid ve lem yûled.','Ve lem yekün lehû küfüven ehad.'],
+'Felak':['Kul e’ûzü birabbilfelak.','Min şerri mâ halak.','Ve min şerri ğâsikın izâ vekab.','Ve min şerrinneffâsâti fil’ukad.','Ve min şerri hâsidin izâ hased.'],
+'Nas':['Kul e’ûzü birabbinnâs.','Melikinnâs.','İlâhinnâs.','Min şerrilvesvâsilhannâs.','Ellezî yüvesvisü fî sudûrinnâs.','Minelcinneti vennâs.']};
+function viewSure(){ var su=(typeof SURES!=='undefined')?SURES[curSure]:null, ok=OKUNUS[curSure], bk='<a href="#gids" class="back">‹ '+esc(t('gTitle'))+'</a>'; if(!su) return bk;
+  var ar=S.sureMode==='ar' || !ok || ok.length!==su.v.length;
+  var h=bk+'<header class="col"><h1>'+esc(curSure)+'</h1><span class="small muted">'+esc(t('sureNo',{n:su.no,v:su.v.length}))+'</span></header>'+
+    '<div class="segctl"><button data-act="suremode" data-id="tr" aria-pressed="'+(!ar)+'">'+esc(t('sureTr'))+'</button><button data-act="suremode" data-id="ar" aria-pressed="'+ar+'">'+esc(t('sureAr'))+'</button></div>';
+  if(OWN) h+='<section class="card" style="gap:6px"><span class="small muted" style="font-weight:600">'+esc(t('sureListen'))+'</span><audio controls preload="none" style="width:100%" src="https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/'+su.no+'.mp3"></audio><span class="small muted">'+esc(t('sureAudioSrc'))+'</span></section>';
+  if(ar){ h+='<section class="card" lang="ar" dir="rtl">'; if(su.no!==1) h+='<div class="ar center" style="color:var(--muted)">'+esc(SURES.Fatiha.v[0])+'</div>';
+    su.v.forEach(function(v,i){ h+='<div class="ar">'+esc(v)+' <span class="vn">'+(i+1)+'</span></div>'; }); h+='</section><div class="note center">'+esc(t('sureSrc'))+'</div>'; }
+  else { h+='<section class="card" lang="tr" style="gap:12px">'; if(su.no!==1) h+='<div class="muted center" style="font-size:17px">'+esc(BESMELE)+'</div>';
+    ok.forEach(function(v,i){ h+='<div class="row" style="align-items:flex-start"><span class="vn" style="flex:0 0 auto;margin-top:2px">'+(i+1)+'</span><span style="font-size:19px;line-height:1.5">'+esc(v)+'</span></div>'; }); h+='</section><div class="note center">'+esc(t('sureOkNote'))+'</div>'; }
+  return h; }
 function icsLink(d){ var a=d.d.replace(/-/g,''), b=addDays(d.d,1).replace(/-/g,'');
   var txt=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//gebedstijden//NL','BEGIN:VEVENT','UID:'+a+'@gebedstijden','DTSTAMP:'+a+'T000000Z','DTSTART;VALUE=DATE:'+a,'DTEND;VALUE=DATE:'+b,'SUMMARY:'+d.n[S.lang],'END:VEVENT','END:VCALENDAR'].join('\r\n');
   return 'data:text/calendar;charset=utf-8,'+encodeURIComponent(txt); }
@@ -464,6 +482,7 @@ document.addEventListener('click',function(e){ var el=e.target.closest ? e.targe
   else if(act==='toggle'){ S.set[id]=!S.set[id]; }
   else if(act==='step'){ var v=S.set[id]+(+el.getAttribute('data-d')); S.set[id]=Math.max(+el.getAttribute('data-min'),Math.min(+el.getAttribute('data-max'),v)); }
   else if(act==='guide'){ S.guide=id; }
+  else if(act==='suremode'){ S.sureMode=id; }
   else if(act==='sure'){ curSure=id; if(route()!=='sure'){ window.location.hash='#sure'; return; } }
   else if(act==='lang'){ S.lang=id; }
   else if(act==='mode'){ S.mode=id; }
