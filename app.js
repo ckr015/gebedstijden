@@ -46,14 +46,15 @@ var DAYS=[
 {d:'2027-12-02',night:1,h:'4 Recep 1449',n:{nl:'Regaib Kandili',tr:'Regaib Kandili'}}];
 
 var PR=['sabah','ogle','ikindi','aksam','yatsi'];
-var NAME={sabah:'Sabah',gunes:'Güneş',ogle:'Öğle',ikindi:'İkindi',aksam:'Akşam',yatsi:'Yatsı'};
+var NAME={cuma:'Cuma',sabah:'Sabah',gunes:'Güneş',ogle:'Öğle',ikindi:'İkindi',aksam:'Akşam',yatsi:'Yatsı'};
 
 var GUIDE={
 sabah:[{k:'sunnet',s:['Kâfirun','İhlas']},{k:'farz',s:['Kevser','İhlas']}],
-ogle:[{k:'sunnet',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',s:['Nasr','İhlas',null,null]},{k:'son',s:['Felak','Nas']}],
-ikindi:[{k:'sunnetG',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',s:['Nasr','İhlas',null,null]}],
+ogle:[{k:'sunnet',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',s:['Kâfirun','Nasr',null,null]},{k:'son',s:['Felak','Nas']}],
+ikindi:[{k:'sunnetG',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',s:['Kâfirun','Nasr',null,null]}],
 aksam:[{k:'farz',s:['Kevser','İhlas',null]},{k:'sunnet',s:['Felak','Nas']}],
-yatsi:[{k:'sunnetG',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',s:['Nasr','İhlas',null,null]},{k:'son',s:['Felak','Nas']},{k:'vitir',s:['Kâfirun','İhlas','Felak']}]};
+cuma:[{k:'sunnet',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',imam:1,s:[null,null]},{k:'son',s:['Kâfirun','Nasr','Felak','Nas']}],
+yatsi:[{k:'sunnetG',s:['Fil','Kureyş','Maun','Kevser']},{k:'farz',s:['Kâfirun','Nasr',null,null]},{k:'son',s:['Felak','Nas']},{k:'vitir',s:['Kâfirun','İhlas','Felak']}]};
 
 /* ---------- teksten ---------- */
 var L={nl:{
@@ -66,9 +67,9 @@ until:'tot {t}',kerahatFrom:'kerahat vanaf {t}',kerahatTill:'kerahat tot {t}',no
 summary:'{n} van 5 gebeden vandaag afgevinkt',srcCalc:'Tijden volgens Diyanet',
 cumaToday:'Vandaag is het cuma',cumaAt:'Vrijdaggebed in de öğle-tijd, vanaf {t}',cumaTomorrow:'Morgen is het cuma',cumaTomorrowSub:'Vrijdaggebed vanaf {t}',
 winTitle:'Wanneer mag je bidden?',winSub:'Vandaag in {c}, Hanefi-regels',ok:'Mag',no:'Niet',
-wSabah:'Na de farz geen nafile meer',wK1:'Kerahat – zonsopgang',wK1s:'Geen enkel gebed',wFree:'Vrije tijd',wFrees:'Kaza en nafile (duha)',
-wK2:'Kerahat – istiva',wK2s:'Zon op het hoogste punt',wOgle:'Tot ikindi begint',wIkindi:'Na de farz geen nafile meer',
-wK3:'Kerahat – zonsondergang',wK3s:'Alleen ikindi-farz van vandaag',wAksam:'Liefst direct, niet uitstellen',wYatsi:'Yatsı en vitir, tot imsak',
+wSabah:'Alleen sünnet en farz van sabah. Kaza mag, andere nafile niet.',wK1:'Kerahat – zonsopgang',wK1s:'Geen enkel gebed',wFree:'Vrije tijd',wFrees:'Kaza en nafile (duha)',
+wK2:'Kerahat – istiva',wK2s:'Zon op het hoogste punt',wOgle:'Tot ikindi begint',wIkindi:'Na de farz geen nafile meer. Kaza mag.',
+wK3:'Kerahat – zonsondergang',wK3s:'Alleen ikindi-farz van vandaag',wAksam:'Liefst direct, niet uitstellen',wYatsi:'Yatsı en vitir tot imsak. Liefst vóór {t}, het midden van de nacht.',k3Pray:'Bid nu nog je ikindi-farz',k3PraySub:'Tot {t} mag alleen dit gebed. Zo laat bidden zonder reden is mekruh.',
 qTitle:'Kıble en moskee',qFrom:'{d}° vanaf het noorden, richting {w}',qHelp:'Houd je telefoon plat met de bovenkant naar het noorden. De pijl wijst dan naar de kıble.',
 qNote:'Een kompas dat meedraait komt in de iPhone-app. Deze webpagina mag de sensoren van je telefoon niet gebruiken.',
 qMosque:'Moskeeën in de buurt',qMosqueSub:'Opent Google Maps rond {c}',qOpen:'Open kaart',
@@ -78,6 +79,7 @@ n_std:'Eerste rekat begint met Sübhaneke. Laatste zit: Ettehiyyatü, Salli-Bari
 n_farz4:'Na rekat 2: Ettehiyyatü. Laatste zit: Ettehiyyatü, Salli-Barik, Rabbena.',
 n_sunnetG:'Na rekat 2: Ettehiyyatü en Salli-Barik. Rekat 3 begint weer met Sübhaneke.',
 n_vitir:'Rekat 3: na de sure tekbir en de Kunut-dua’s, daarna rükû.',
+gImam:'Met de imam',n_cuma:'Achter de imam lees je zelf geen Fatiha of sure. Het cuma-gebed komt in de plaats van öğle.',
 gFoot:'De sure’s zijn een voorstel met korte sure’s in de volgorde van de Koran. Je mag andere kiezen.',
 dTitle:'Heilige dagen en nachten',dToday:'Vandaag',dNext:'Eerstvolgende',dIn:'over {n} dagen',dIn1:'morgen',dIn0:'vandaag',dEve:'avond',dSrc:'Bron: Diyanet, dinî günler takvimi 2026 en 2027',
 rTitle:'Ramadan',rStarts:'Ramadan begint over {n} dagen',rFirst:'Maandag 8 februari 2027 in {c}',rDay:'Ramadan · dag {n}',rIftarIn:'İftar over',rSahurIn:'Sahur nog',rIftarWas:'İftar was om {t}',
@@ -105,9 +107,9 @@ until:'{t} saatine kadar',kerahatFrom:'kerahat {t} itibarıyla',kerahatTill:'ker
 summary:'Bugün 5 vakitten {n} tanesi işaretlendi',srcCalc:'Vakitler Diyanet’e göre',
 cumaToday:'Bugün cuma',cumaAt:'Cuma namazı öğle vaktinde, {t} itibarıyla',cumaTomorrow:'Yarın cuma',cumaTomorrowSub:'Cuma namazı {t} itibarıyla',
 winTitle:'Ne zaman namaz kılınır?',winSub:'Bugün {c}, Hanefî hükümleri',ok:'Olur',no:'Olmaz',
-wSabah:'Farzdan sonra nafile kılınmaz',wK1:'Kerahat – güneş doğarken',wK1s:'Hiçbir namaz kılınmaz',wFree:'Serbest vakit',wFrees:'Kaza ve nafile (duha)',
-wK2:'Kerahat – istiva',wK2s:'Güneş tepe noktasında',wOgle:'İkindi girene kadar',wIkindi:'Farzdan sonra nafile kılınmaz',
-wK3:'Kerahat – güneş batarken',wK3s:'Yalnızca o günün ikindi farzı',wAksam:'Geciktirmeden kılınmalı',wYatsi:'Yatsı ve vitir, imsaka kadar',
+wSabah:'Yalnız sabahın sünneti ve farzı. Kaza olur, başka nafile olmaz.',wK1:'Kerahat – güneş doğarken',wK1s:'Hiçbir namaz kılınmaz',wFree:'Serbest vakit',wFrees:'Kaza ve nafile (duha)',
+wK2:'Kerahat – istiva',wK2s:'Güneş tepe noktasında',wOgle:'İkindi girene kadar',wIkindi:'Farzdan sonra nafile kılınmaz. Kaza olur.',
+wK3:'Kerahat – güneş batarken',wK3s:'Yalnızca o günün ikindi farzı',wAksam:'Geciktirmeden kılınmalı',wYatsi:'Yatsı ve vitir imsaka kadar. {t} (gece yarısı) öncesi tercih edilir.',k3Pray:'İkindi farzını şimdi kılın',k3PraySub:'{t} saatine kadar yalnız bu namaz kılınır. Özürsüz bu vakte bırakmak mekruhtur.',
 qTitle:'Kıble ve cami',qFrom:'Kuzeyden {d}°, {w} yönü',qHelp:'Telefonu düz tutun, üst kenarı kuzeye baksın. Ok kıbleyi gösterir.',
 qNote:'Dönen pusula iPhone uygulamasında olacak. Bu web sayfası telefonun sensörlerini kullanamaz.',
 qMosque:'Yakındaki camiler',qMosqueSub:'{c} çevresinde Google Haritalar açılır',qOpen:'Haritayı aç',
@@ -117,6 +119,7 @@ n_std:'İlk rekât Sübhaneke ile başlar. Son oturuş: Ettehiyyatü, Salli-Bari
 n_farz4:'2. rekâttan sonra: Ettehiyyatü. Son oturuş: Ettehiyyatü, Salli-Barik, Rabbena.',
 n_sunnetG:'2. rekâttan sonra: Ettehiyyatü ve Salli-Barik. 3. rekât yine Sübhaneke ile başlar.',
 n_vitir:'3. rekât: sureden sonra tekbir ve Kunut duaları, sonra rükû.',
+gImam:'İmamla',n_cuma:'İmamın arkasında Fatiha ve sure okunmaz. Cuma namazı öğlenin yerine kılınır.',
 gFoot:'Sureler, Kur’an sırasına göre kısa surelerden bir öneridir. Başka sure de okuyabilirsiniz.',
 dTitle:'Dinî gün ve geceler',dToday:'Bugün',dNext:'Sıradaki',dIn:'{n} gün sonra',dIn1:'yarın',dIn0:'bugün',dEve:'akşamı',dSrc:'Kaynak: Diyanet, dinî günler takvimi 2026 ve 2027',
 rTitle:'Ramazan',rStarts:'Ramazan’a {n} gün kaldı',rFirst:'8 Şubat 2027 Pazartesi, {c}',rDay:'Ramazan · {n}. gün',rIftarIn:'İftara kalan',rSahurIn:'Sahurun bitmesine',rIftarWas:'İftar {t} saatindeydi',
@@ -204,6 +207,9 @@ nav:{vandaag:'<circle cx="11" cy="11" r="8"></circle><path d="M11 6.5V11l3 2"></
 function sw(id,on,label){ return '<button class="switch" role="switch" id="sw-'+id+'" aria-checked="'+(on?'true':'false')+'" aria-label="'+esc(label)+'" data-act="toggle" data-id="'+id+'"><span><span></span></span></button>'; }
 function prayed(key){ return !!S.prayed[key]; }
 
+function kerStatus(c){ var k3=c.ker.id==='k3', open=k3 && !prayed(c.today+':ikindi');
+  var title=open?t('k3Pray'):t('kerahatNow'), sub=open?t('k3PraySub',{t:hm(c.ker.end)}):t(k3?'kerahatOnlyAsr':'kerahatUntil',{t:hm(c.ker.end)});
+  return '<div class="status no">'+IC.no+'<div class="col"><span class="title">'+esc(title)+'</span><span class="small" style="color:#5C3A0A">'+esc(sub)+'</span></div></div>'; }
 function viewToday(c){ var p=c.place, d=c.day, x=d.t, h='', tzToday=c.today;
   var hj=hijri(tzToday);
   h+='<header class="between"><div class="col"><a href="#dagen" class="small" style="font-weight:600;text-decoration:none;min-height:28px;display:flex;align-items:center">'+esc(longDate(tzToday,{weekday:'short',day:'numeric',month:'short'}))+(hj?' · '+esc(hj):'')+' ›</a>'+
@@ -223,7 +229,7 @@ function viewToday(c){ var p=c.place, d=c.day, x=d.t, h='', tzToday=c.today;
       : '<button class="btn gold wide" data-act="pray" data-key="'+c.cur.key+'">'+esc(t('prayedBtn',{p:pname(c.cur.id)}))+'</button>'; }
   h+='</section>';
   // status
-  if(c.ker){ h+='<div class="status no">'+IC.no+'<div class="col"><span class="title">'+esc(t('kerahatNow'))+'</span><span class="small" style="color:#5C3A0A">'+esc(t(c.ker.id==='k3'?'kerahatOnlyAsr':'kerahatUntil',{t:hm(c.ker.end)}))+'</span></div></div>'; }
+  if(c.ker){ h+=kerStatus(c); }
   else { var nk=c.nextKer, pk=parts(nk.start,p.tz), pre=keyOf(pk.y,pk.m,pk.d)!==c.today?t('tomorrow')+' ':'';
     h+='<div class="status">'+IC.ok+'<div class="col"><span class="title">'+esc(t('allowed'))+'</span><span class="small muted">'+esc(t('nextKerahat',{a:pre+hm(nk.start),b:hm(nk.end)}))+'</span></div></div>'; }
   // cuma
@@ -257,9 +263,9 @@ function ramadanCard(c){ var x=c.day.t, n=dayDiff(RAM.start,c.today)+1, h='<sect
 
 function viewWindows(c){ var x=c.day.t, K=S.set.kerahatMin*60000, n=c.tom.t.fajr, now=c.now;
   var segs=[[x.fajr,x.rise,pname('sabah'),t('wSabah'),1],[x.rise,x.rise+K,t('wK1'),t('wK1s'),0],[x.rise+K,x.noon-K2,t('wFree'),t('wFrees'),1],[x.noon-K2,x.noon,t('wK2'),t('wK2s'),0],
-    [x.noon,x.asr,pname('ogle'),t('wOgle'),1],[x.asr,x.set-K,pname('ikindi'),t('wIkindi'),1],[x.set-K,x.set,t('wK3'),t('wK3s'),0],[x.set,x.isha,pname('aksam'),t('wAksam'),1],[x.isha,n,pname('yatsi'),t('wYatsi'),1]];
+    [x.noon,x.asr,pname('ogle'),t('wOgle'),1],[x.asr,x.set-K,pname('ikindi'),t('wIkindi'),1],[x.set-K,x.set,t('wK3'),t('wK3s'),0],[x.set,x.isha,pname('aksam'),t('wAksam'),1],[x.isha,n,pname('yatsi'),t('wYatsi',{t:hm((x.set+n)/2)}),1]];
   var h='<header class="col"><h1>'+esc(t('winTitle'))+'</h1><span class="small muted">'+esc(t('winSub',{c:c.place.name}))+'</span></header>';
-  h+= c.ker ? '<div class="status no">'+IC.no+'<div class="col"><span class="title">'+esc(t('kerahatNow'))+'</span><span class="small" style="color:#5C3A0A">'+esc(t(c.ker.id==='k3'?'kerahatOnlyAsr':'kerahatUntil',{t:hm(c.ker.end)}))+'</span></div></div>'
+  h+= c.ker ? kerStatus(c)
             : '<div class="status">'+IC.ok+'<div class="col"><span class="title">'+esc(t('allowed'))+'</span><span class="small muted">'+esc(t('nextKerahat',{a:hm(c.nextKer.start),b:hm(c.nextKer.end)}))+'</span></div></div>';
   h+='<section style="display:flex;flex-direction:column;gap:6px">';
   segs.forEach(function(s){ var cur=s[0]<=now && now<s[1];
@@ -273,21 +279,21 @@ function bearing(lat,lng){ var R=Math.PI/180, f1=lat*R, f2=21.4225*R, dl=(39.826
   var b=Math.atan2(Math.sin(dl),Math.cos(f1)*Math.tan(f2)-Math.sin(f1)*Math.cos(dl))/R; return (b+360)%360; }
 function viewQibla(c){ var p=c.place, b=bearing(p.lat,p.lng), w=t('wind'), dir=w[Math.round(b/45)%8];
   var h='<h1>'+esc(t('qTitle'))+'</h1><section class="card" style="align-items:center">'+
-    '<svg width="230" height="230" viewBox="0 0 220 220" role="img" aria-label="'+esc(t('qFrom',{d:Math.round(b),w:dir}))+'"><circle cx="110" cy="110" r="104" fill="#F3F6F4" stroke="#C9D3D0" stroke-width="2"></circle><circle cx="110" cy="110" r="78" fill="#fff" stroke="#DDE4E1"></circle>'+
+    '<svg width="230" height="230" viewBox="0 0 220 220" role="img" aria-label="'+esc(t('qFrom',{d:b.toFixed(1).replace('.',','),w:dir}))+'"><circle cx="110" cy="110" r="104" fill="#F3F6F4" stroke="#C9D3D0" stroke-width="2"></circle><circle cx="110" cy="110" r="78" fill="#fff" stroke="#DDE4E1"></circle>'+
     '<text x="110" y="26" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#14201D">'+w[0]+'</text><text x="198" y="115" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#4E5B58">'+w[2]+'</text>'+
     '<text x="110" y="204" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#4E5B58">'+w[4]+'</text><text x="22" y="115" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#4E5B58">'+w[6]+'</text>'+
     '<g transform="rotate('+b.toFixed(1)+' 110 110)"><path d="M110 40 L122 110 L110 122 L98 110 Z" fill="#0F4C45"></path><rect x="101" y="18" width="18" height="18" rx="3" fill="#14201D"></rect><rect x="101" y="23" width="18" height="3" fill="#F2C879"></rect></g><circle cx="110" cy="110" r="6" fill="#14201D"></circle></svg>'+
-    '<div class="num" style="font-size:28px;font-weight:700">'+Math.round(b)+'° '+dir+'</div><div class="small muted" style="text-align:center">'+esc(t('qFrom',{d:Math.round(b),w:dir}))+' · '+esc(p.name)+'</div><div class="small muted" style="text-align:center">'+esc(t('qHelp'))+'</div></section>';
+    '<div class="num" style="font-size:28px;font-weight:700">'+b.toFixed(1).replace('.',',')+'° '+dir+'</div><div class="small muted" style="text-align:center">'+esc(t('qFrom',{d:b.toFixed(1).replace('.',','),w:dir}))+' · '+esc(p.name)+'</div><div class="small muted" style="text-align:center">'+esc(t('qHelp'))+'</div></section>';
   h+='<a class="linkcard" href="https://www.google.com/maps/search/'+(S.lang==='nl'?'moskee':'cami')+'/@'+p.lat.toFixed(4)+','+p.lng.toFixed(4)+',13z" target="_blank" rel="noopener"><div class="col grow"><span class="title">'+esc(t('qMosque'))+'</span><span class="small muted">'+esc(t('qMosqueSub',{c:p.name}))+'</span></div><span class="chip">'+esc(t('qOpen'))+' ›</span></a>';
   h+='<div class="note" style="text-align:center">'+esc(t('qNote'))+'</div>'; return h; }
 
-function viewGuide(c){ var sel=S.guide || (c.cur?c.cur.id:c.next.id), h='<header class="col"><h1>'+esc(t('gTitle'))+'</h1><span class="small muted">'+esc(t('gSub'))+'</span></header><div class="segctl">';
-  PR.forEach(function(id){ h+='<button data-act="guide" data-id="'+id+'" aria-pressed="'+(id===sel?'true':'false')+'">'+pname(id)+'</button>'; });
+function viewGuide(c){ var sel=S.guide || (c.cur?c.cur.id:c.next.id); if(!S.guide && sel==='ogle' && c.wd==='Fri') sel='cuma'; var h='<header class="col"><h1>'+esc(t('gTitle'))+'</h1><span class="small muted">'+esc(t('gSub'))+'</span></header><div class="segctl">';
+  PR.concat(['cuma']).forEach(function(id){ h+='<button style="font-size:13px;padding:0 2px" data-act="guide" data-id="'+id+'" aria-pressed="'+(id===sel?'true':'false')+'">'+pname(id)+'</button>'; });
   h+='</div>';
   GUIDE[sel].forEach(function(u){ var n=u.s.length;
     h+='<section class="card"><h2>'+esc(t('u_'+u.k))+' · '+n+' '+esc(t('gRekat'))+'</h2>';
-    u.s.forEach(function(s,i){ h+='<div class="row"><span class="num" style="width:32px;height:32px;border-radius:16px;background:#DCEBE6;color:#0F4C45;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">'+(i+1)+'</span><span class="title">'+(s?'Fatiha + '+s:esc(t('gOnly')))+'</span></div>'; });
-    var note= u.k==='vitir'?t('n_vitir'): u.k==='sunnetG'?t('n_sunnetG'): (n>2?t('n_farz4'):t('n_std'));
+    u.s.forEach(function(s,i){ h+='<div class="row"><span class="num" style="width:32px;height:32px;border-radius:16px;background:#DCEBE6;color:#0F4C45;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">'+(i+1)+'</span><span class="title">'+(u.imam?esc(t('gImam')):s?'Fatiha + '+s:esc(t('gOnly')))+'</span></div>'; });
+    var note= u.imam?t('n_cuma'): u.k==='vitir'?t('n_vitir'): u.k==='sunnetG'?t('n_sunnetG'): (n>2?t('n_farz4'):t('n_std'));
     h+='<span class="small muted">'+esc(note)+'</span></section>'; });
   h+='<div class="note" style="text-align:center">'+esc(t('gFoot'))+'</div>'; return h; }
 
