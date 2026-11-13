@@ -1,0 +1,41 @@
+name: Diyanet-tijden ophalen
+
+on:
+  schedule:
+    # Elke dag om 03:17 Nederlandse wintertijd.
+    - cron: '17 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diyanet
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tijden ophalen
+        env:
+          DIYANET_EMAIL: ${{ secrets.DIYANET_EMAIL }}
+          DIYANET_PASSWORD: ${{ secrets.DIYANET_PASSWORD }}
+        run: node scripts/fetch-diyanet.mjs
+      - name: Opslaan en publiceren
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/diyanet
+          if git diff --cached --quiet; then
+            echo "Niets veranderd."
+            exit 0
+          fi
+          git commit -m "Diyanet-tijden bijgewerkt"
+          git push origin main main:gh-pages
