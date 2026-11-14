@@ -1,0 +1,44 @@
+name: Moskeeënlijst bijwerken
+
+on:
+  schedule:
+    # Elke maandag om 04:41 Nederlandse wintertijd.
+    - cron: '41 3 * * 1'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/fetch-mosques.mjs
+      - .github/workflows/mosques.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mosques
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Lijst ophalen
+        run: node scripts/fetch-mosques.mjs
+      - name: Opslaan en publiceren
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/mosques.json
+          if git diff --cached --quiet; then
+            echo "Niets veranderd."
+            exit 0
+          fi
+          git commit -m "Moskeeënlijst bijgewerkt"
+          git pull --rebase origin main
+          git push origin main main:gh-pages
