@@ -93,7 +93,35 @@ function inRamadan(k){ return k>=RAM.start && k<=RAM.end; }
 /* ---------- tijden ---------- */
 var tcache={};
 function clearTimes(){ tcache={}; }
-function timesFor(k){ if(tcache[k]) return tcache[k]; var p=place(), a=splitKey(k); return (tcache[k]=PT.compute(a.y,a.m,a.d,p.lat,p.lng)); }
+function timesFor(k){ if(tcache[k]) return tcache[k]; loadOfficial(); var p=place(), a=splitKey(k); return (tcache[k]=withOfficial(k,PT.compute(a.y,a.m,a.d,p.lat,p.lng),p.tz)); }
+
+/* ---------- officiële tijden van Diyanet ----------
+   Elke nacht zet een taak de officiële tijden per stad klaar in data/diyanet/. Zijn ze er, dan gebruikt de app die;
+   anders (geen internet, onbekende plaats) blijft de eigen berekening gelden. */
+var official={slug:'',days:{},to:'',asked:''};
+var OFF_KEYS=[['fajr','fajr'],['rise','sunrise'],['noon','dhuhr'],['asr','asr'],['set','maghrib'],['isha','isha']];
+function slugOf(n){ var x=String(n).replace(/İ/g,'I').replace(/ı/g,'i'); try{ x=x.normalize('NFD').replace(/[̀-ͯ]/g,''); }catch(e){}
+  return x.toLowerCase().replace(/[^a-z0-9]+/g,' ').replace(/^ +| +$/g,'').replace(/ /g,'-'); }
+function setOfficial(sl,j){ var d={}, to=''; ((j&&j.days)||[]).forEach(function(x){ if(x && /^\d{4}-\d{2}-\d{2}$/.test(x.date)){ d[x.date]=x; if(x.date>to) to=x.date; } });
+  official.slug=sl; official.days=d; official.to=to; }
+function loadOfficial(){ if(!OWN) return; var sl=slugOf(place().name); if(!sl) return;
+  if(official.slug!==sl){ official={slug:sl,days:{},to:'',asked:''};
+    try{ var raw=window.localStorage.getItem('gebedstijden.diyanet.'+sl); if(raw) setOfficial(sl,JSON.parse(raw)); }catch(e){} }
+  if(official.asked===sl) return; official.asked=sl;
+  try{ window.fetch('data/diyanet/'+sl+'.json',{cache:'no-cache'}).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
+    .then(function(j){ if(official.slug!==sl || !j || !j.days || !j.days.length) return; var before=official.to; setOfficial(sl,j);
+      try{ window.localStorage.setItem('gebedstijden.diyanet.'+sl,JSON.stringify({days:j.days})); }catch(e){}
+      if(official.to!==before || true){ clearTimes(); if(typeof render==='function') render(); } })
+    .catch(function(){}); }catch(e){} }
+/* Vervangt een berekende tijd door de officiële, als die er is en er hooguit 20 minuten naast ligt. */
+function withOfficial(k,calc,tz){ var day=official.days[k]; if(!day || official.slug!==slugOf(place().name)) return calc;
+  var out={}, key, ok=true; for(key in calc){ if(Object.prototype.hasOwnProperty.call(calc,key)) out[key]=calc[key]; }
+  OFF_KEYS.forEach(function(pair){ var m=/^(\d{1,2}):(\d{2})$/.exec(String(day[pair[1]]||'')); if(!m || typeof calc[pair[0]]!=='number'){ ok=false; return; }
+    var p=parts(calc[pair[0]],tz), diff=(Number(m[1])*60+Number(m[2]))-(p.h*60+p.mi); if(diff>720) diff-=1440; if(diff<-720) diff+=1440;
+    if(Math.abs(diff)>20){ ok=false; return; }
+    out[pair[0]]=Math.round(calc[pair[0]]/60000)*60000+diff*60000; });
+  return ok?out:calc; }
+function officialLine(){ return (official.to && official.slug===slugOf(place().name)) ? t('srcOfficial').replace('{d}',longDate(official.to,{day:'numeric',month:'short'})) : t('srcOwn'); }
 function buildDay(k){ var x=timesFor(k), n=timesFor(addDays(k,1));
   return {key:k,t:x,
     prayers:[{id:'sabah',start:x.fajr,end:x.rise},{id:'ogle',start:x.noon,end:x.asr},{id:'ikindi',start:x.asr,end:x.set},{id:'aksam',start:x.set,end:x.isha},{id:'yatsi',start:x.isha,end:n.fajr}]
@@ -402,7 +430,7 @@ function viewSettings(c){ var h=back()+'<h1>'+esc(t('mSettings'))+'</h1>';
   h+='<section class="card"><h2>'+esc(t('look'))+'</h2><div class="segctl"><button data-act="mode" data-id="auto" aria-pressed="'+(S.mode==='auto')+'">'+esc(t('lookAuto'))+'</button><button data-act="mode" data-id="light" aria-pressed="'+(S.mode==='light')+'">'+esc(t('lookLight'))+'</button><button data-act="mode" data-id="dark" aria-pressed="'+(S.mode==='dark')+'">'+esc(t('lookDark'))+'</button></div><span class="small muted">'+esc(t('lookSub'))+'</span></section>';
   h+='<section class="card"><div class="between"><div class="col"><h2>'+esc(t('work'))+'</h2><span class="small muted">'+esc(t('workSub'))+'</span></div><button class="switch" role="switch" aria-checked="'+(S.work.on?'true':'false')+'" aria-label="'+esc(t('work'))+'" data-act="work"><span><span></span></span></button></div>'+
      (S.work.on?'<div class="grid2"><div class="col"><label for="wfrom">'+esc(t('workFrom'))+'</label><input id="wfrom" type="time" value="'+esc(S.work.from)+'"></div><div class="col"><label for="wto">'+esc(t('workTo'))+'</label><input id="wto" type="time" value="'+esc(S.work.to)+'"></div></div>':'')+'</section>';
-  h+='<section class="card"><h2>'+esc(t('src'))+'</h2><span class="small muted">'+esc(t('srcText'))+'</span><span class="small muted">'+esc(t('indep'))+'</span></section>';
+  h+='<section class="card"><h2>'+esc(t('src'))+'</h2><span class="small" style="font-weight:600">'+esc(officialLine())+'</span><span class="small muted">'+esc(t('srcText'))+'</span><span class="small muted">'+esc(t('indep'))+'</span></section>';
   return h; }
 
 /* ---------- geluid ---------- */
