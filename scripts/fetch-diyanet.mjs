@@ -11,12 +11,14 @@ const MAX_DISCOVERY = 45;      // hooguit zoveel verzoeken per keer om plaatsen 
 
 // Onze steden: naam, land, en andere schrijfwijzen die Diyanet kan gebruiken.
 const CITIES = [
-  ...['Alkmaar', 'Almelo', 'Almere', 'Alphen aan den Rijn', 'Amersfoort', 'Amstelveen', 'Amsterdam', 'Apeldoorn',
+  ...['Alkmaar', 'Almelo', 'Alphen aan den Rijn', 'Amersfoort', 'Amstelveen', 'Amsterdam', 'Apeldoorn',
     'Arnhem', 'Assen', 'Bergen op Zoom', 'Breda', 'Delft', 'Den Helder', 'Deventer', 'Diemen', 'Dordrecht', 'Ede',
-    'Eindhoven', 'Emmen', 'Enschede', 'Gouda', 'Groningen', 'Haarlem', 'Heerlen', 'Helmond', 'Hengelo', 'Hilversum',
+    'Eindhoven', 'Emmen', 'Enschede', 'Gouda', 'Groningen', 'Haarlem', 'Heerlen', 'Helmond', 'Hilversum',
     'Hoofddorp', 'Hoorn', 'Leeuwarden', 'Leiden', 'Lelystad', 'Maastricht', 'Middelburg', 'Nijmegen', 'Oss',
     'Purmerend', 'Roermond', 'Rotterdam', 'Schiedam', 'Sittard', 'Tiel', 'Tilburg', 'Utrecht', 'Veenendaal', 'Venlo',
     'Vlaardingen', 'Waalwijk', 'Zaandam', 'Zoetermeer', 'Zwolle'].map((name) => ({ name, country: 'nl' })),
+  { name: 'Almere', country: 'nl', also: ['ALMERE-STAD', 'ALMERE STAD'] },
+  { name: 'Hengelo', country: 'nl', also: ['HENGELO (overijssel)', 'HENGELO OVERIJSSEL'] },
   { name: 'Den Bosch', country: 'nl', also: ['S-HERTOGENBOSCH', 'SHERTOGENBOSCH', 'HERTOGENBOSCH'] },
   { name: 'Den Haag', country: 'nl', also: ['S-GRAVENHAGE', 'SGRAVENHAGE', 'THE HAGUE', 'LAHEY'] },
   { name: 'Antwerpen', country: 'be', also: ['ANVERS', 'ANTWERP'] },
