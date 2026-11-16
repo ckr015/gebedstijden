@@ -1,0 +1,328 @@
+{
+ "city": "Roermond",
+ "cityId": 13884,
+ "source": "Diyanet İşleri Başkanlığı",
+ "fetched": "2026-11-16",
+ "days": [
+  {
+   "date": "2026-11-15",
+   "fajr": "05:56",
+   "sunrise": "07:45",
+   "dhuhr": "12:26",
+   "asr": "14:30",
+   "maghrib": "16:56",
+   "isha": "18:32",
+   "hijri": "6 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-16",
+   "fajr": "05:58",
+   "sunrise": "07:47",
+   "dhuhr": "12:26",
+   "asr": "14:29",
+   "maghrib": "16:54",
+   "isha": "18:31",
+   "hijri": "7 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-17",
+   "fajr": "05:59",
+   "sunrise": "07:49",
+   "dhuhr": "12:26",
+   "asr": "14:28",
+   "maghrib": "16:53",
+   "isha": "18:30",
+   "hijri": "8 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-18",
+   "fajr": "06:01",
+   "sunrise": "07:50",
+   "dhuhr": "12:26",
+   "asr": "14:27",
+   "maghrib": "16:52",
+   "isha": "18:29",
+   "hijri": "9 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-19",
+   "fajr": "06:02",
+   "sunrise": "07:52",
+   "dhuhr": "12:26",
+   "asr": "14:26",
+   "maghrib": "16:51",
+   "isha": "18:28",
+   "hijri": "10 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-20",
+   "fajr": "06:03",
+   "sunrise": "07:54",
+   "dhuhr": "12:27",
+   "asr": "14:25",
+   "maghrib": "16:49",
+   "isha": "18:27",
+   "hijri": "11 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-21",
+   "fajr": "06:05",
+   "sunrise": "07:55",
+   "dhuhr": "12:27",
+   "asr": "14:24",
+   "maghrib": "16:48",
+   "isha": "18:26",
+   "hijri": "12 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-22",
+   "fajr": "06:06",
+   "sunrise": "07:57",
+   "dhuhr": "12:27",
+   "asr": "14:23",
+   "maghrib": "16:47",
+   "isha": "18:25",
+   "hijri": "13 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-23",
+   "fajr": "06:07",
+   "sunrise": "07:59",
+   "dhuhr": "12:27",
+   "asr": "14:23",
+   "maghrib": "16:46",
+   "isha": "18:24",
+   "hijri": "14 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-24",
+   "fajr": "06:08",
+   "sunrise": "08:00",
+   "dhuhr": "12:28",
+   "asr": "14:22",
+   "maghrib": "16:45",
+   "isha": "18:24",
+   "hijri": "15 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-25",
+   "fajr": "06:10",
+   "sunrise": "08:02",
+   "dhuhr": "12:28",
+   "asr": "14:21",
+   "maghrib": "16:44",
+   "isha": "18:23",
+   "hijri": "16 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-26",
+   "fajr": "06:11",
+   "sunrise": "08:03",
+   "dhuhr": "12:28",
+   "asr": "14:21",
+   "maghrib": "16:43",
+   "isha": "18:22",
+   "hijri": "17 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-27",
+   "fajr": "06:12",
+   "sunrise": "08:05",
+   "dhuhr": "12:28",
+   "asr": "14:20",
+   "maghrib": "16:42",
+   "isha": "18:22",
+   "hijri": "18 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-28",
+   "fajr": "06:13",
+   "sunrise": "08:06",
+   "dhuhr": "12:29",
+   "asr": "14:19",
+   "maghrib": "16:41",
+   "isha": "18:21",
+   "hijri": "19 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-29",
+   "fajr": "06:15",
+   "sunrise": "08:08",
+   "dhuhr": "12:29",
+   "asr": "14:19",
+   "maghrib": "16:41",
+   "isha": "18:21",
+   "hijri": "20 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-11-30",
+   "fajr": "06:16",
+   "sunrise": "08:09",
+   "dhuhr": "12:30",
+   "asr": "14:18",
+   "maghrib": "16:40",
+   "isha": "18:20",
+   "hijri": "21 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-01",
+   "fajr": "06:17",
+   "sunrise": "08:10",
+   "dhuhr": "12:30",
+   "asr": "14:18",
+   "maghrib": "16:39",
+   "isha": "18:20",
+   "hijri": "22 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-02",
+   "fajr": "06:18",
+   "sunrise": "08:12",
+   "dhuhr": "12:30",
+   "asr": "14:17",
+   "maghrib": "16:39",
+   "isha": "18:19",
+   "hijri": "23 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-03",
+   "fajr": "06:19",
+   "sunrise": "08:13",
+   "dhuhr": "12:31",
+   "asr": "14:17",
+   "maghrib": "16:38",
+   "isha": "18:19",
+   "hijri": "24 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-04",
+   "fajr": "06:20",
+   "sunrise": "08:14",
+   "dhuhr": "12:31",
+   "asr": "14:17",
+   "maghrib": "16:38",
+   "isha": "18:19",
+   "hijri": "25 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-05",
+   "fajr": "06:21",
+   "sunrise": "08:16",
+   "dhuhr": "12:31",
+   "asr": "14:17",
+   "maghrib": "16:37",
+   "isha": "18:18",
+   "hijri": "26 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-06",
+   "fajr": "06:22",
+   "sunrise": "08:17",
+   "dhuhr": "12:32",
+   "asr": "14:16",
+   "maghrib": "16:37",
+   "isha": "18:18",
+   "hijri": "27 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-07",
+   "fajr": "06:23",
+   "sunrise": "08:18",
+   "dhuhr": "12:32",
+   "asr": "14:16",
+   "maghrib": "16:36",
+   "isha": "18:18",
+   "hijri": "28 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-08",
+   "fajr": "06:24",
+   "sunrise": "08:19",
+   "dhuhr": "12:33",
+   "asr": "14:16",
+   "maghrib": "16:36",
+   "isha": "18:18",
+   "hijri": "29 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-09",
+   "fajr": "06:25",
+   "sunrise": "08:21",
+   "dhuhr": "12:33",
+   "asr": "14:16",
+   "maghrib": "16:36",
+   "isha": "18:18",
+   "hijri": "30 Cemaziyelahir 1448"
+  },
+  {
+   "date": "2026-12-10",
+   "fajr": "06:26",
+   "sunrise": "08:22",
+   "dhuhr": "12:34",
+   "asr": "14:16",
+   "maghrib": "16:36",
+   "isha": "18:18",
+   "hijri": "1 Recep 1448"
+  },
+  {
+   "date": "2026-12-11",
+   "fajr": "06:27",
+   "sunrise": "08:23",
+   "dhuhr": "12:34",
+   "asr": "14:16",
+   "maghrib": "16:35",
+   "isha": "18:18",
+   "hijri": "2 Recep 1448"
+  },
+  {
+   "date": "2026-12-12",
+   "fajr": "06:28",
+   "sunrise": "08:24",
+   "dhuhr": "12:35",
+   "asr": "14:16",
+   "maghrib": "16:35",
+   "isha": "18:18",
+   "hijri": "3 Recep 1448"
+  },
+  {
+   "date": "2026-12-13",
+   "fajr": "06:29",
+   "sunrise": "08:25",
+   "dhuhr": "12:35",
+   "asr": "14:16",
+   "maghrib": "16:35",
+   "isha": "18:18",
+   "hijri": "4 Recep 1448"
+  },
+  {
+   "date": "2026-12-14",
+   "fajr": "06:30",
+   "sunrise": "08:26",
+   "dhuhr": "12:35",
+   "asr": "14:16",
+   "maghrib": "16:35",
+   "isha": "18:18",
+   "hijri": "5 Recep 1448"
+  },
+  {
+   "date": "2026-12-15",
+   "fajr": "06:30",
+   "sunrise": "08:26",
+   "dhuhr": "12:36",
+   "asr": "14:16",
+   "maghrib": "16:35",
+   "isha": "18:18",
+   "hijri": "6 Recep 1448"
+  },
+  {
+   "date": "2026-12-16",
+   "fajr": "06:31",
+   "sunrise": "08:27",
+   "dhuhr": "12:36",
+   "asr": "14:16",
+   "maghrib": "16:36",
+   "isha": "18:18",
+   "hijri": "7 Recep 1448"
+  }
+ ]
+}
