@@ -2,7 +2,7 @@
  "city": "Gent",
  "cityId": 11916,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-16",
+ "fetched": "2026-11-17",
  "days": [
   {
    "date": "2026-11-15",
@@ -323,6 +323,16 @@
    "maghrib": "16:45",
    "isha": "18:28",
    "hijri": "7 Recep 1448"
+  },
+  {
+   "date": "2026-12-17",
+   "fajr": "06:41",
+   "sunrise": "08:36",
+   "dhuhr": "12:46",
+   "asr": "14:26",
+   "maghrib": "16:46",
+   "isha": "18:28",
+   "hijri": "8 Recep 1448"
   }
  ]
 }

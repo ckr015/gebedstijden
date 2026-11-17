@@ -2,374 +2,401 @@
  "cities": {
   "Alkmaar": {
    "file": "alkmaar.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Almelo": {
    "file": "almelo.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Alphen aan den Rijn": {
    "file": "alphen-aan-den-rijn.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Amersfoort": {
    "file": "amersfoort.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Amstelveen": {
    "file": "amstelveen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Amsterdam": {
    "file": "amsterdam.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Apeldoorn": {
    "file": "apeldoorn.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Arnhem": {
    "file": "arnhem.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Assen": {
    "file": "assen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Bergen op Zoom": {
    "file": "bergen-op-zoom.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Breda": {
    "file": "breda.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Delft": {
    "file": "delft.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Den Helder": {
    "file": "den-helder.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Deventer": {
    "file": "deventer.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Diemen": {
    "file": "diemen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Dordrecht": {
    "file": "dordrecht.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Ede": {
    "file": "ede.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Eindhoven": {
    "file": "eindhoven.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Emmen": {
    "file": "emmen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Enschede": {
    "file": "enschede.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Gouda": {
    "file": "gouda.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Groningen": {
    "file": "groningen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Haarlem": {
    "file": "haarlem.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Heerlen": {
    "file": "heerlen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Helmond": {
    "file": "helmond.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Hilversum": {
    "file": "hilversum.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Hoofddorp": {
    "file": "hoofddorp.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Hoorn": {
    "file": "hoorn.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Leeuwarden": {
    "file": "leeuwarden.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Leiden": {
    "file": "leiden.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Lelystad": {
    "file": "lelystad.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Maastricht": {
    "file": "maastricht.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Middelburg": {
    "file": "middelburg.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Nijmegen": {
    "file": "nijmegen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Oss": {
    "file": "oss.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Purmerend": {
    "file": "purmerend.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Roermond": {
    "file": "roermond.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Rotterdam": {
    "file": "rotterdam.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Schiedam": {
    "file": "schiedam.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Sittard": {
    "file": "sittard.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Tiel": {
    "file": "tiel.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Tilburg": {
    "file": "tilburg.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Utrecht": {
    "file": "utrecht.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Veenendaal": {
    "file": "veenendaal.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Venlo": {
    "file": "venlo.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Vlaardingen": {
    "file": "vlaardingen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Waalwijk": {
    "file": "waalwijk.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Zaandam": {
    "file": "zaandam.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Zoetermeer": {
    "file": "zoetermeer.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Zwolle": {
    "file": "zwolle.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Den Bosch": {
    "file": "den-bosch.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Den Haag": {
    "file": "den-haag.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Antwerpen": {
    "file": "antwerpen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Brussel": {
    "file": "brussel.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Genk": {
    "file": "genk.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Gent": {
    "file": "gent.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Berlijn": {
    "file": "berlijn.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Duisburg": {
    "file": "duisburg.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Keulen": {
    "file": "keulen.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "Ankara": {
    "file": "ankara.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
   },
   "İstanbul": {
    "file": "istanbul.json",
-   "fetched": "2026-11-16",
+   "fetched": "2026-11-17",
    "from": "2026-11-15",
-   "to": "2026-12-16"
+   "to": "2026-12-17"
+  },
+  "Almere": {
+   "file": "almere.json",
+   "fetched": "2026-11-17",
+   "from": "2026-11-16",
+   "to": "2026-12-17"
+  },
+  "Hengelo": {
+   "file": "hengelo.json",
+   "fetched": "2026-11-17",
+   "from": "2026-11-16",
+   "to": "2026-12-17"
+  },
+  "İzmir": {
+   "file": "izmir.json",
+   "fetched": "2026-11-17",
+   "from": "2026-11-16",
+   "to": "2026-12-17"
+  },
+  "Kayseri": {
+   "file": "kayseri.json",
+   "fetched": "2026-11-17",
+   "from": "2026-11-16",
+   "to": "2026-12-17"
+  },
+  "Konya": {
+   "file": "konya.json",
+   "fetched": "2026-11-17",
+   "from": "2026-11-16",
+   "to": "2026-12-17"
   }
  },
- "updated": "2026-11-16",
- "missing": [
-  "Almere",
-  "Hengelo"
- ]
+ "updated": "2026-11-17",
+ "missing": []
 }

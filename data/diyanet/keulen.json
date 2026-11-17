@@ -2,7 +2,7 @@
  "city": "Keulen",
  "cityId": 11019,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-16",
+ "fetched": "2026-11-17",
  "days": [
   {
    "date": "2026-11-15",
@@ -323,6 +323,16 @@
    "maghrib": "16:33",
    "isha": "18:15",
    "hijri": "7 Recep 1448"
+  },
+  {
+   "date": "2026-12-17",
+   "fajr": "06:28",
+   "sunrise": "08:23",
+   "dhuhr": "12:33",
+   "asr": "14:14",
+   "maghrib": "16:33",
+   "isha": "18:15",
+   "hijri": "8 Recep 1448"
   }
  ]
 }

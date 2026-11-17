@@ -2,7 +2,7 @@
  "city": "Genk",
  "cityId": 11898,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-16",
+ "fetched": "2026-11-17",
  "days": [
   {
    "date": "2026-11-15",
@@ -323,6 +323,16 @@
    "maghrib": "16:39",
    "isha": "18:21",
    "hijri": "7 Recep 1448"
+  },
+  {
+   "date": "2026-12-17",
+   "fajr": "06:33",
+   "sunrise": "08:29",
+   "dhuhr": "12:39",
+   "asr": "14:20",
+   "maghrib": "16:39",
+   "isha": "18:21",
+   "hijri": "8 Recep 1448"
   }
  ]
 }

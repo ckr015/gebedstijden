@@ -2,7 +2,7 @@
  "city": "Diemen",
  "cityId": 13720,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-16",
+ "fetched": "2026-11-17",
  "days": [
   {
    "date": "2026-11-15",
@@ -323,6 +323,16 @@
    "maghrib": "16:34",
    "isha": "18:20",
    "hijri": "7 Recep 1448"
+  },
+  {
+   "date": "2026-12-17",
+   "fajr": "06:38",
+   "sunrise": "08:38",
+   "dhuhr": "12:41",
+   "asr": "14:16",
+   "maghrib": "16:34",
+   "isha": "18:20",
+   "hijri": "8 Recep 1448"
   }
  ]
 }

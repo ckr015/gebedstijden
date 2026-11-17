@@ -2,7 +2,7 @@
  "city": "Schiedam",
  "cityId": 13948,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-16",
+ "fetched": "2026-11-17",
  "days": [
   {
    "date": "2026-11-15",
@@ -323,6 +323,16 @@
    "maghrib": "16:38",
    "isha": "18:23",
    "hijri": "7 Recep 1448"
+  },
+  {
+   "date": "2026-12-17",
+   "fajr": "06:40",
+   "sunrise": "08:38",
+   "dhuhr": "12:43",
+   "asr": "14:20",
+   "maghrib": "16:39",
+   "isha": "18:24",
+   "hijri": "8 Recep 1448"
   }
  ]
 }

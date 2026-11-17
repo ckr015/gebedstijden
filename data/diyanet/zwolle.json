@@ -2,7 +2,7 @@
  "city": "Zwolle",
  "cityId": 13881,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-16",
+ "fetched": "2026-11-17",
  "days": [
   {
    "date": "2026-11-15",
@@ -323,6 +323,16 @@
    "maghrib": "16:28",
    "isha": "18:15",
    "hijri": "7 Recep 1448"
+  },
+  {
+   "date": "2026-12-17",
+   "fajr": "06:34",
+   "sunrise": "08:34",
+   "dhuhr": "12:36",
+   "asr": "14:10",
+   "maghrib": "16:29",
+   "isha": "18:16",
+   "hijri": "8 Recep 1448"
   }
  ]
 }
