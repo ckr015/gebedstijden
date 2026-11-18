@@ -2,7 +2,7 @@
  "city": "Kayseri",
  "cityId": 9620,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-17",
+ "fetched": "2026-11-18",
  "days": [
   {
    "date": "2026-11-16",
@@ -323,6 +323,16 @@
    "maghrib": "17:25",
    "isha": "18:48",
    "hijri": "8 Recep 1448"
+  },
+  {
+   "date": "2026-12-18",
+   "fajr": "06:15",
+   "sunrise": "07:44",
+   "dhuhr": "12:39",
+   "asr": "15:05",
+   "maghrib": "17:25",
+   "isha": "18:49",
+   "hijri": "9 Recep 1448"
   }
  ]
 }

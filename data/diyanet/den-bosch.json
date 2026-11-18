@@ -2,18 +2,8 @@
  "city": "Den Bosch",
  "cityId": 13886,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-17",
+ "fetched": "2026-11-18",
  "days": [
-  {
-   "date": "2026-11-15",
-   "fajr": "05:59",
-   "sunrise": "07:50",
-   "dhuhr": "12:28",
-   "asr": "14:31",
-   "maghrib": "16:57",
-   "isha": "18:34",
-   "hijri": "6 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-16",
    "fajr": "06:01",
@@ -333,6 +323,16 @@
    "maghrib": "16:36",
    "isha": "18:20",
    "hijri": "8 Recep 1448"
+  },
+  {
+   "date": "2026-12-18",
+   "fajr": "06:36",
+   "sunrise": "08:34",
+   "dhuhr": "12:40",
+   "asr": "14:17",
+   "maghrib": "16:36",
+   "isha": "18:21",
+   "hijri": "9 Recep 1448"
   }
  ]
 }
