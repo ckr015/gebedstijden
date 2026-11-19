@@ -2,18 +2,8 @@
  "city": "Middelburg",
  "cityId": 13885,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-18",
+ "fetched": "2026-11-19",
  "days": [
-  {
-   "date": "2026-11-16",
-   "fajr": "06:08",
-   "sunrise": "07:58",
-   "dhuhr": "12:35",
-   "asr": "14:37",
-   "maghrib": "17:03",
-   "isha": "18:40",
-   "hijri": "7 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-17",
    "fajr": "06:09",
@@ -333,6 +323,16 @@
    "maghrib": "16:44",
    "isha": "18:28",
    "hijri": "9 Recep 1448"
+  },
+  {
+   "date": "2026-12-19",
+   "fajr": "06:43",
+   "sunrise": "08:40",
+   "dhuhr": "12:47",
+   "asr": "14:26",
+   "maghrib": "16:44",
+   "isha": "18:28",
+   "hijri": "10 Recep 1448"
   }
  ]
 }

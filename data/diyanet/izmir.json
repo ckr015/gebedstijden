@@ -2,18 +2,8 @@
  "city": "İzmir",
  "cityId": 9560,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-18",
+ "fetched": "2026-11-19",
  "days": [
-  {
-   "date": "2026-11-16",
-   "fajr": "06:22",
-   "sunrise": "07:47",
-   "dhuhr": "13:01",
-   "asr": "15:42",
-   "maghrib": "18:06",
-   "isha": "19:25",
-   "hijri": "7 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-17",
    "fajr": "06:23",
@@ -333,6 +323,16 @@
    "maghrib": "17:59",
    "isha": "19:22",
    "hijri": "9 Recep 1448"
+  },
+  {
+   "date": "2026-12-19",
+   "fajr": "06:48",
+   "sunrise": "08:17",
+   "dhuhr": "13:13",
+   "asr": "15:39",
+   "maghrib": "18:00",
+   "isha": "19:23",
+   "hijri": "10 Recep 1448"
   }
  ]
 }

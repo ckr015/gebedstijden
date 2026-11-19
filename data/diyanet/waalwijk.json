@@ -2,18 +2,8 @@
  "city": "Waalwijk",
  "cityId": 13965,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-18",
+ "fetched": "2026-11-19",
  "days": [
-  {
-   "date": "2026-11-16",
-   "fajr": "06:02",
-   "sunrise": "07:53",
-   "dhuhr": "12:29",
-   "asr": "14:31",
-   "maghrib": "16:56",
-   "isha": "18:34",
-   "hijri": "7 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-17",
    "fajr": "06:03",
@@ -333,6 +323,16 @@
    "maghrib": "16:37",
    "isha": "18:22",
    "hijri": "9 Recep 1448"
+  },
+  {
+   "date": "2026-12-19",
+   "fajr": "06:38",
+   "sunrise": "08:35",
+   "dhuhr": "12:42",
+   "asr": "14:19",
+   "maghrib": "16:38",
+   "isha": "18:22",
+   "hijri": "10 Recep 1448"
   }
  ]
 }

@@ -2,18 +2,8 @@
  "city": "Maastricht",
  "cityId": 13904,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-18",
+ "fetched": "2026-11-19",
  "days": [
-  {
-   "date": "2026-11-16",
-   "fajr": "05:59",
-   "sunrise": "07:47",
-   "dhuhr": "12:27",
-   "asr": "14:31",
-   "maghrib": "16:57",
-   "isha": "18:32",
-   "hijri": "7 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-17",
    "fajr": "06:00",
@@ -333,6 +323,16 @@
    "maghrib": "16:39",
    "isha": "18:21",
    "hijri": "9 Recep 1448"
+  },
+  {
+   "date": "2026-12-19",
+   "fajr": "06:34",
+   "sunrise": "08:29",
+   "dhuhr": "12:39",
+   "asr": "14:20",
+   "maghrib": "16:39",
+   "isha": "18:21",
+   "hijri": "10 Recep 1448"
   }
  ]
 }

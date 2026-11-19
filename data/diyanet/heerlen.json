@@ -2,18 +2,8 @@
  "city": "Heerlen",
  "cityId": 13928,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-18",
+ "fetched": "2026-11-19",
  "days": [
-  {
-   "date": "2026-11-16",
-   "fajr": "05:57",
-   "sunrise": "07:46",
-   "dhuhr": "12:26",
-   "asr": "14:30",
-   "maghrib": "16:55",
-   "isha": "18:31",
-   "hijri": "7 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-17",
    "fajr": "05:59",
@@ -333,6 +323,16 @@
    "maghrib": "16:37",
    "isha": "18:19",
    "hijri": "9 Recep 1448"
+  },
+  {
+   "date": "2026-12-19",
+   "fajr": "06:32",
+   "sunrise": "08:28",
+   "dhuhr": "12:38",
+   "asr": "14:19",
+   "maghrib": "16:38",
+   "isha": "18:20",
+   "hijri": "10 Recep 1448"
   }
  ]
 }
