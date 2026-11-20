@@ -2,18 +2,8 @@
  "city": "Lelystad",
  "cityId": 13900,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-19",
+ "fetched": "2026-11-20",
  "days": [
-  {
-   "date": "2026-11-17",
-   "fajr": "06:03",
-   "sunrise": "07:56",
-   "dhuhr": "12:28",
-   "asr": "14:25",
-   "maghrib": "16:50",
-   "isha": "18:30",
-   "hijri": "8 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-18",
    "fajr": "06:04",
@@ -333,6 +323,16 @@
    "maghrib": "16:32",
    "isha": "18:19",
    "hijri": "10 Recep 1448"
+  },
+  {
+   "date": "2026-12-20",
+   "fajr": "06:38",
+   "sunrise": "08:39",
+   "dhuhr": "12:41",
+   "asr": "14:14",
+   "maghrib": "16:32",
+   "isha": "18:19",
+   "hijri": "11 Recep 1448"
   }
  ]
 }

@@ -2,18 +2,8 @@
  "city": "Deventer",
  "cityId": 13974,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-19",
+ "fetched": "2026-11-20",
  "days": [
-  {
-   "date": "2026-11-17",
-   "fajr": "05:59",
-   "sunrise": "07:52",
-   "dhuhr": "12:25",
-   "asr": "14:23",
-   "maghrib": "16:48",
-   "isha": "18:28",
-   "hijri": "8 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-18",
    "fajr": "06:01",
@@ -333,6 +323,16 @@
    "maghrib": "16:30",
    "isha": "18:17",
    "hijri": "10 Recep 1448"
+  },
+  {
+   "date": "2026-12-20",
+   "fajr": "06:35",
+   "sunrise": "08:35",
+   "dhuhr": "12:38",
+   "asr": "14:12",
+   "maghrib": "16:31",
+   "isha": "18:17",
+   "hijri": "11 Recep 1448"
   }
  ]
 }
