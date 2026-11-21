@@ -2,18 +2,8 @@
  "city": "Nijmegen",
  "cityId": 13897,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-20",
+ "fetched": "2026-11-21",
  "days": [
-  {
-   "date": "2026-11-18",
-   "fajr": "06:02",
-   "sunrise": "07:53",
-   "dhuhr": "12:27",
-   "asr": "14:25",
-   "maghrib": "16:50",
-   "isha": "18:29",
-   "hijri": "9 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-19",
    "fajr": "06:03",
@@ -333,6 +323,16 @@
    "maghrib": "16:34",
    "isha": "18:19",
    "hijri": "11 Recep 1448"
+  },
+  {
+   "date": "2026-12-21",
+   "fajr": "06:36",
+   "sunrise": "08:34",
+   "dhuhr": "12:39",
+   "asr": "14:16",
+   "maghrib": "16:35",
+   "isha": "18:19",
+   "hijri": "12 Recep 1448"
   }
  ]
 }

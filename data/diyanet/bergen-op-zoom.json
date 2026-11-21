@@ -2,18 +2,8 @@
  "city": "Bergen op Zoom",
  "cityId": 13888,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-20",
+ "fetched": "2026-11-21",
  "days": [
-  {
-   "date": "2026-11-18",
-   "fajr": "06:08",
-   "sunrise": "07:58",
-   "dhuhr": "12:33",
-   "asr": "14:33",
-   "maghrib": "16:58",
-   "isha": "18:35",
-   "hijri": "9 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-19",
    "fajr": "06:09",
@@ -333,6 +323,16 @@
    "maghrib": "16:42",
    "isha": "18:26",
    "hijri": "11 Recep 1448"
+  },
+  {
+   "date": "2026-12-21",
+   "fajr": "06:42",
+   "sunrise": "08:39",
+   "dhuhr": "12:46",
+   "asr": "14:24",
+   "maghrib": "16:42",
+   "isha": "18:26",
+   "hijri": "12 Recep 1448"
   }
  ]
 }
