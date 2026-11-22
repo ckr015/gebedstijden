@@ -2,18 +2,8 @@
  "city": "Tiel",
  "cityId": 13957,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-21",
+ "fetched": "2026-11-22",
  "days": [
-  {
-   "date": "2026-11-19",
-   "fajr": "06:05",
-   "sunrise": "07:57",
-   "dhuhr": "12:29",
-   "asr": "14:26",
-   "maghrib": "16:50",
-   "isha": "18:29",
-   "hijri": "10 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-20",
    "fajr": "06:06",
@@ -333,6 +323,16 @@
    "maghrib": "16:36",
    "isha": "18:21",
    "hijri": "12 Recep 1448"
+  },
+  {
+   "date": "2026-12-22",
+   "fajr": "06:38",
+   "sunrise": "08:37",
+   "dhuhr": "12:42",
+   "asr": "14:18",
+   "maghrib": "16:36",
+   "isha": "18:21",
+   "hijri": "13 Recep 1448"
   }
  ]
 }

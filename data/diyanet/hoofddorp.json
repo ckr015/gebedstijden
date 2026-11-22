@@ -2,18 +2,8 @@
  "city": "Hoofddorp",
  "cityId": 13931,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-21",
+ "fetched": "2026-11-22",
  "days": [
-  {
-   "date": "2026-11-19",
-   "fajr": "06:08",
-   "sunrise": "08:02",
-   "dhuhr": "12:31",
-   "asr": "14:27",
-   "maghrib": "16:51",
-   "isha": "18:32",
-   "hijri": "10 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-20",
    "fajr": "06:10",
@@ -333,6 +323,16 @@
    "maghrib": "16:37",
    "isha": "18:23",
    "hijri": "12 Recep 1448"
+  },
+  {
+   "date": "2026-12-22",
+   "fajr": "06:42",
+   "sunrise": "08:42",
+   "dhuhr": "12:45",
+   "asr": "14:19",
+   "maghrib": "16:37",
+   "isha": "18:24",
+   "hijri": "13 Recep 1448"
   }
  ]
 }

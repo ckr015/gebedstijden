@@ -2,18 +2,8 @@
  "city": "Alphen aan den Rijn",
  "cityId": 13909,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-21",
+ "fetched": "2026-11-22",
  "days": [
-  {
-   "date": "2026-11-19",
-   "fajr": "06:08",
-   "sunrise": "08:01",
-   "dhuhr": "12:32",
-   "asr": "14:28",
-   "maghrib": "16:52",
-   "isha": "18:32",
-   "hijri": "10 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-20",
    "fajr": "06:10",
@@ -333,6 +323,16 @@
    "maghrib": "16:38",
    "isha": "18:24",
    "hijri": "12 Recep 1448"
+  },
+  {
+   "date": "2026-12-22",
+   "fajr": "06:42",
+   "sunrise": "08:41",
+   "dhuhr": "12:45",
+   "asr": "14:20",
+   "maghrib": "16:38",
+   "isha": "18:24",
+   "hijri": "13 Recep 1448"
   }
  ]
 }

@@ -2,18 +2,8 @@
  "city": "Eindhoven",
  "cityId": 13978,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-21",
+ "fetched": "2026-11-22",
  "days": [
-  {
-   "date": "2026-11-19",
-   "fajr": "06:04",
-   "sunrise": "07:55",
-   "dhuhr": "12:28",
-   "asr": "14:27",
-   "maghrib": "16:52",
-   "isha": "18:30",
-   "hijri": "10 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-20",
    "fajr": "06:06",
@@ -333,6 +323,16 @@
    "maghrib": "16:38",
    "isha": "18:22",
    "hijri": "12 Recep 1448"
+  },
+  {
+   "date": "2026-12-22",
+   "fajr": "06:37",
+   "sunrise": "08:34",
+   "dhuhr": "12:41",
+   "asr": "14:20",
+   "maghrib": "16:39",
+   "isha": "18:22",
+   "hijri": "13 Recep 1448"
   }
  ]
 }
