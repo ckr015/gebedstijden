@@ -2,18 +2,8 @@
  "city": "Berlijn",
  "cityId": 11002,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-22",
+ "fetched": "2026-11-23",
  "days": [
-  {
-   "date": "2026-11-20",
-   "fajr": "05:35",
-   "sunrise": "07:29",
-   "dhuhr": "11:57",
-   "asr": "13:50",
-   "maghrib": "16:15",
-   "isha": "17:56",
-   "hijri": "11 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-21",
    "fajr": "05:36",
@@ -333,6 +323,16 @@
    "maghrib": "16:01",
    "isha": "17:48",
    "hijri": "13 Recep 1448"
+  },
+  {
+   "date": "2026-12-23",
+   "fajr": "06:08",
+   "sunrise": "08:09",
+   "dhuhr": "12:10",
+   "asr": "13:43",
+   "maghrib": "16:02",
+   "isha": "17:49",
+   "hijri": "14 Recep 1448"
   }
  ]
 }
