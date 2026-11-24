@@ -2,18 +2,8 @@
  "city": "Brussel",
  "cityId": 11915,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-23",
+ "fetched": "2026-11-24",
  "days": [
-  {
-   "date": "2026-11-21",
-   "fajr": "06:11",
-   "sunrise": "08:00",
-   "dhuhr": "12:33",
-   "asr": "14:32",
-   "maghrib": "16:56",
-   "isha": "18:33",
-   "hijri": "12 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-22",
    "fajr": "06:12",
@@ -333,6 +323,16 @@
    "maghrib": "16:46",
    "isha": "18:28",
    "hijri": "14 Recep 1448"
+  },
+  {
+   "date": "2026-12-24",
+   "fajr": "06:42",
+   "sunrise": "08:37",
+   "dhuhr": "12:47",
+   "asr": "14:28",
+   "maghrib": "16:47",
+   "isha": "18:29",
+   "hijri": "15 Recep 1448"
   }
  ]
 }

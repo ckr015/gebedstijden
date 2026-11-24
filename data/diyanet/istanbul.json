@@ -2,18 +2,8 @@
  "city": "İstanbul",
  "cityId": 9541,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-23",
+ "fetched": "2026-11-24",
  "days": [
-  {
-   "date": "2026-11-21",
-   "fajr": "06:22",
-   "sunrise": "07:51",
-   "dhuhr": "12:55",
-   "asr": "15:26",
-   "maghrib": "17:49",
-   "isha": "19:12",
-   "hijri": "12 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-22",
    "fajr": "06:23",
@@ -333,6 +323,16 @@
    "maghrib": "17:47",
    "isha": "19:13",
    "hijri": "14 Recep 1448"
+  },
+  {
+   "date": "2026-12-24",
+   "fajr": "06:47",
+   "sunrise": "08:20",
+   "dhuhr": "13:08",
+   "asr": "15:27",
+   "maghrib": "17:47",
+   "isha": "19:14",
+   "hijri": "15 Recep 1448"
   }
  ]
 }

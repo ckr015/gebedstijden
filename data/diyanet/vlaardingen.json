@@ -2,18 +2,8 @@
  "city": "Vlaardingen",
  "cityId": 13962,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-23",
+ "fetched": "2026-11-24",
  "days": [
-  {
-   "date": "2026-11-21",
-   "fajr": "06:12",
-   "sunrise": "08:05",
-   "dhuhr": "12:33",
-   "asr": "14:28",
-   "maghrib": "16:52",
-   "isha": "18:32",
-   "hijri": "12 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-22",
    "fajr": "06:13",
@@ -333,6 +323,16 @@
    "maghrib": "16:41",
    "isha": "18:26",
    "hijri": "14 Recep 1448"
+  },
+  {
+   "date": "2026-12-24",
+   "fajr": "06:44",
+   "sunrise": "08:42",
+   "dhuhr": "12:47",
+   "asr": "14:23",
+   "maghrib": "16:42",
+   "isha": "18:27",
+   "hijri": "15 Recep 1448"
   }
  ]
 }
