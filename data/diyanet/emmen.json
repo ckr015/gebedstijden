@@ -2,18 +2,8 @@
  "city": "Emmen",
  "cityId": 13880,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-24",
+ "fetched": "2026-11-25",
  "days": [
-  {
-   "date": "2026-11-22",
-   "fajr": "06:04",
-   "sunrise": "08:00",
-   "dhuhr": "12:23",
-   "asr": "14:13",
-   "maghrib": "16:37",
-   "isha": "18:19",
-   "hijri": "13 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-23",
    "fajr": "06:05",
@@ -333,6 +323,16 @@
    "maghrib": "16:27",
    "isha": "18:15",
    "hijri": "15 Recep 1448"
+  },
+  {
+   "date": "2026-12-25",
+   "fajr": "06:35",
+   "sunrise": "08:37",
+   "dhuhr": "12:37",
+   "asr": "14:09",
+   "maghrib": "16:28",
+   "isha": "18:15",
+   "hijri": "16 Recep 1448"
   }
  ]
 }

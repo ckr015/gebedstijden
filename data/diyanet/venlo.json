@@ -2,18 +2,8 @@
  "city": "Venlo",
  "cityId": 13898,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-24",
+ "fetched": "2026-11-25",
  "days": [
-  {
-   "date": "2026-11-22",
-   "fajr": "06:05",
-   "sunrise": "07:57",
-   "dhuhr": "12:26",
-   "asr": "14:22",
-   "maghrib": "16:46",
-   "isha": "18:24",
-   "hijri": "13 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-23",
    "fajr": "06:07",
@@ -333,6 +323,16 @@
    "maghrib": "16:37",
    "isha": "18:21",
    "hijri": "15 Recep 1448"
+  },
+  {
+   "date": "2026-12-25",
+   "fajr": "06:36",
+   "sunrise": "08:32",
+   "dhuhr": "12:40",
+   "asr": "14:19",
+   "maghrib": "16:38",
+   "isha": "18:21",
+   "hijri": "16 Recep 1448"
   }
  ]
 }

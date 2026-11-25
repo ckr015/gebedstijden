@@ -2,18 +2,8 @@
  "city": "Leeuwarden",
  "cityId": 13879,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-24",
+ "fetched": "2026-11-25",
  "days": [
-  {
-   "date": "2026-11-22",
-   "fajr": "06:09",
-   "sunrise": "08:06",
-   "dhuhr": "12:28",
-   "asr": "14:16",
-   "maghrib": "16:40",
-   "isha": "18:23",
-   "hijri": "13 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-23",
    "fajr": "06:10",
@@ -333,6 +323,16 @@
    "maghrib": "16:29",
    "isha": "18:18",
    "hijri": "15 Recep 1448"
+  },
+  {
+   "date": "2026-12-25",
+   "fajr": "06:40",
+   "sunrise": "08:44",
+   "dhuhr": "12:42",
+   "asr": "14:12",
+   "maghrib": "16:30",
+   "isha": "18:19",
+   "hijri": "16 Recep 1448"
   }
  ]
 }
