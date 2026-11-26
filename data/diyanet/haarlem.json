@@ -2,18 +2,8 @@
  "city": "Haarlem",
  "cityId": 13877,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-25",
+ "fetched": "2026-11-26",
  "days": [
-  {
-   "date": "2026-11-23",
-   "fajr": "06:14",
-   "sunrise": "08:09",
-   "dhuhr": "12:33",
-   "asr": "14:23",
-   "maghrib": "16:47",
-   "isha": "18:28",
-   "hijri": "14 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-24",
    "fajr": "06:15",
@@ -333,6 +323,16 @@
    "maghrib": "16:39",
    "isha": "18:25",
    "hijri": "16 Recep 1448"
+  },
+  {
+   "date": "2026-12-26",
+   "fajr": "06:44",
+   "sunrise": "08:44",
+   "dhuhr": "12:47",
+   "asr": "14:21",
+   "maghrib": "16:39",
+   "isha": "18:26",
+   "hijri": "17 Recep 1448"
   }
  ]
 }

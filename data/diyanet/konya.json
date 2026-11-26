@@ -2,18 +2,8 @@
  "city": "Konya",
  "cityId": 9676,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-25",
+ "fetched": "2026-11-26",
  "days": [
-  {
-   "date": "2026-11-23",
-   "fajr": "06:06",
-   "sunrise": "07:31",
-   "dhuhr": "12:41",
-   "asr": "15:19",
-   "maghrib": "17:41",
-   "isha": "19:01",
-   "hijri": "14 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-24",
    "fajr": "06:07",
@@ -333,6 +323,16 @@
    "maghrib": "17:43",
    "isha": "19:05",
    "hijri": "16 Recep 1448"
+  },
+  {
+   "date": "2026-12-26",
+   "fajr": "06:30",
+   "sunrise": "07:57",
+   "dhuhr": "12:55",
+   "asr": "15:23",
+   "maghrib": "17:44",
+   "isha": "19:06",
+   "hijri": "17 Recep 1448"
   }
  ]
 }

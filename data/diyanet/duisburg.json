@@ -2,18 +2,8 @@
  "city": "Duisburg",
  "cityId": 11007,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-25",
+ "fetched": "2026-11-26",
  "days": [
-  {
-   "date": "2026-11-23",
-   "fajr": "06:04",
-   "sunrise": "07:57",
-   "dhuhr": "12:24",
-   "asr": "14:18",
-   "maghrib": "16:42",
-   "isha": "18:21",
-   "hijri": "14 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-24",
    "fajr": "06:06",
@@ -333,6 +323,16 @@
    "maghrib": "16:35",
    "isha": "18:19",
    "hijri": "16 Recep 1448"
+  },
+  {
+   "date": "2026-12-26",
+   "fajr": "06:34",
+   "sunrise": "08:31",
+   "dhuhr": "12:38",
+   "asr": "14:17",
+   "maghrib": "16:36",
+   "isha": "18:19",
+   "hijri": "17 Recep 1448"
   }
  ]
 }
