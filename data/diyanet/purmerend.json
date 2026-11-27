@@ -2,18 +2,8 @@
  "city": "Purmerend",
  "cityId": 13945,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-26",
+ "fetched": "2026-11-27",
  "days": [
-  {
-   "date": "2026-11-24",
-   "fajr": "06:14",
-   "sunrise": "08:10",
-   "dhuhr": "12:32",
-   "asr": "14:21",
-   "maghrib": "16:44",
-   "isha": "18:26",
-   "hijri": "15 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-25",
    "fajr": "06:16",
@@ -333,6 +323,16 @@
    "maghrib": "16:37",
    "isha": "18:24",
    "hijri": "17 Recep 1448"
+  },
+  {
+   "date": "2026-12-27",
+   "fajr": "06:43",
+   "sunrise": "08:44",
+   "dhuhr": "12:46",
+   "asr": "14:20",
+   "maghrib": "16:38",
+   "isha": "18:25",
+   "hijri": "18 Recep 1448"
   }
  ]
 }

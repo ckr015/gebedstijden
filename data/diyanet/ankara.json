@@ -2,18 +2,8 @@
  "city": "Ankara",
  "cityId": 9206,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-26",
+ "fetched": "2026-11-27",
  "days": [
-  {
-   "date": "2026-11-24",
-   "fajr": "06:08",
-   "sunrise": "07:36",
-   "dhuhr": "12:40",
-   "asr": "15:12",
-   "maghrib": "17:34",
-   "isha": "18:57",
-   "hijri": "15 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-25",
    "fajr": "06:09",
@@ -333,6 +323,16 @@
    "maghrib": "17:36",
    "isha": "19:01",
    "hijri": "17 Recep 1448"
+  },
+  {
+   "date": "2026-12-27",
+   "fajr": "06:32",
+   "sunrise": "08:02",
+   "dhuhr": "12:54",
+   "asr": "15:16",
+   "maghrib": "17:37",
+   "isha": "19:02",
+   "hijri": "18 Recep 1448"
   }
  ]
 }

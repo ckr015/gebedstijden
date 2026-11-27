@@ -2,18 +2,8 @@
  "city": "Breda",
  "cityId": 13887,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-26",
+ "fetched": "2026-11-27",
  "days": [
-  {
-   "date": "2026-11-24",
-   "fajr": "06:14",
-   "sunrise": "08:07",
-   "dhuhr": "12:32",
-   "asr": "14:25",
-   "maghrib": "16:48",
-   "isha": "18:28",
-   "hijri": "15 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-25",
    "fajr": "06:15",
@@ -333,6 +323,16 @@
    "maghrib": "16:43",
    "isha": "18:27",
    "hijri": "17 Recep 1448"
+  },
+  {
+   "date": "2026-12-27",
+   "fajr": "06:42",
+   "sunrise": "08:40",
+   "dhuhr": "12:47",
+   "asr": "14:25",
+   "maghrib": "16:44",
+   "isha": "18:28",
+   "hijri": "18 Recep 1448"
   }
  ]
 }

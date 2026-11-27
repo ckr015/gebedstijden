@@ -2,18 +2,8 @@
  "city": "Gouda",
  "cityId": 13924,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-26",
+ "fetched": "2026-11-27",
  "days": [
-  {
-   "date": "2026-11-24",
-   "fajr": "06:15",
-   "sunrise": "08:09",
-   "dhuhr": "12:33",
-   "asr": "14:24",
-   "maghrib": "16:47",
-   "isha": "18:28",
-   "hijri": "15 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-25",
    "fajr": "06:16",
@@ -333,6 +323,16 @@
    "maghrib": "16:41",
    "isha": "18:26",
    "hijri": "17 Recep 1448"
+  },
+  {
+   "date": "2026-12-27",
+   "fajr": "06:43",
+   "sunrise": "08:42",
+   "dhuhr": "12:47",
+   "asr": "14:23",
+   "maghrib": "16:42",
+   "isha": "18:27",
+   "hijri": "18 Recep 1448"
   }
  ]
 }

@@ -2,18 +2,8 @@
  "city": "Zoetermeer",
  "cityId": 13971,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-26",
+ "fetched": "2026-11-27",
  "days": [
-  {
-   "date": "2026-11-24",
-   "fajr": "06:16",
-   "sunrise": "08:10",
-   "dhuhr": "12:34",
-   "asr": "14:24",
-   "maghrib": "16:47",
-   "isha": "18:28",
-   "hijri": "15 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-25",
    "fajr": "06:17",
@@ -333,6 +323,16 @@
    "maghrib": "16:42",
    "isha": "18:27",
    "hijri": "17 Recep 1448"
+  },
+  {
+   "date": "2026-12-27",
+   "fajr": "06:44",
+   "sunrise": "08:43",
+   "dhuhr": "12:48",
+   "asr": "14:24",
+   "maghrib": "16:42",
+   "isha": "18:28",
+   "hijri": "18 Recep 1448"
   }
  ]
 }
