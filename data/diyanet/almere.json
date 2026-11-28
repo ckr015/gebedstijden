@@ -2,18 +2,8 @@
  "city": "Almere",
  "cityId": 13906,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-27",
+ "fetched": "2026-11-28",
  "days": [
-  {
-   "date": "2026-11-25",
-   "fajr": "06:14",
-   "sunrise": "08:10",
-   "dhuhr": "12:31",
-   "asr": "14:20",
-   "maghrib": "16:42",
-   "isha": "18:24",
-   "hijri": "16 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-26",
    "fajr": "06:16",
@@ -333,6 +323,16 @@
    "maghrib": "16:38",
    "isha": "18:24",
    "hijri": "18 Recep 1448"
+  },
+  {
+   "date": "2026-12-28",
+   "fajr": "06:42",
+   "sunrise": "08:42",
+   "dhuhr": "12:46",
+   "asr": "14:20",
+   "maghrib": "16:39",
+   "isha": "18:25",
+   "hijri": "19 Recep 1448"
   }
  ]
 }

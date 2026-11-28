@@ -2,18 +2,8 @@
  "city": "Delft",
  "cityId": 13874,
  "source": "Diyanet İşleri Başkanlığı",
- "fetched": "2026-11-27",
+ "fetched": "2026-11-28",
  "days": [
-  {
-   "date": "2026-11-25",
-   "fajr": "06:17",
-   "sunrise": "08:12",
-   "dhuhr": "12:34",
-   "asr": "14:24",
-   "maghrib": "16:47",
-   "isha": "18:28",
-   "hijri": "16 Cemaziyelahir 1448"
-  },
   {
    "date": "2026-11-26",
    "fajr": "06:19",
@@ -333,6 +323,16 @@
    "maghrib": "16:43",
    "isha": "18:29",
    "hijri": "18 Recep 1448"
+  },
+  {
+   "date": "2026-12-28",
+   "fajr": "06:45",
+   "sunrise": "08:44",
+   "dhuhr": "12:49",
+   "asr": "14:25",
+   "maghrib": "16:44",
+   "isha": "18:29",
+   "hijri": "19 Recep 1448"
   }
  ]
 }
